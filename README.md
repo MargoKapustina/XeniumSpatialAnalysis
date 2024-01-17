@@ -30,12 +30,12 @@ The following can be performed with this suite of tools:
 
 # Function List
 `HighlightCluster`
-* highlight cells from one Xenium object, in another (recommended when subsetting clusters for downstream analysis)  
-{_cells from first object labelled "this cluster" & all other clusters in the object labelled "all else"_}
-  
-`HighlightCells`
 * highlight cluster(s) of choice in an Xenium object  
-{_cluster of interest labelled "these cells" & all other clusters in the object labelled "all else"_}
+{_cluster of interest labelled "this cluster" & all other clusters in the object labelled "all else"_}
+
+`HighlightCells`
+* highlight subset cells from a Xenium object of choice  -- useful when subsetting cells for downstream analysis  
+{_cells from subset object labelled "these cells" & all other cells labelled "all else"_}
 
 `GenerateBoxPlot`
 * plot a boxplot of a given genes per cluster using sequencing-depth corrected counts  
