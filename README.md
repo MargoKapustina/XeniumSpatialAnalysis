@@ -1,13 +1,16 @@
-# Xenium Spatial Analysis Toolkit
+<a name="top"/>  
+
+# Xenium Spatial Analysis Toolkit  
+🆇🅴🅽🅸🆄🅼 🆂🅿🅰🆃🅸🅰🅻 🅰🅽🅰🅻🆈🆂🅸🆂   
 This repository contains tools and workflows to spatially analyze cell-types using Xenium data.   
-🆇🅴🅽🅸🆄🅼 🆂🅿🅰🆃🅸🅰🅻 🅰🅽🅰🅻🆈🆂🅸🆂  
+
 ## Table of Contents
 1. [Prep Environment](#prep-environment-installing-seurat)
 2. [Toolkit Contents](#toolkit-contents)
+3. [Function List](#function-list)
    
 # Prep Environment: installing Seurat
 These tools are compatible with Seurat V5. For more information, see https://satijalab.org/seurat/articles/install_v5.   
-   
 To install and load package:
 ```
 install.packages('Seurat')
@@ -15,7 +18,6 @@ library(Seurat)
 ```
 # Toolkit Contents
 The following can be performed with this suite of tools:  
-   
 * highlight UMAP clusters of interest _in situ_ across your FOV of choice
 * Create publication ready plots
 * tally the number of cells in each Xenium Assay Seurat object
@@ -25,6 +27,32 @@ The following can be performed with this suite of tools:
 * calculate the midline of any group of cells _in situ_
 * compute gene expression as a function of distance away from a set midline
 * perform a gene expression gradient analysis (via computing 1-Dimensional UMAP embeddings values for cells)
+
+# Function List
+`HighlightCluster`
+* highlight cells from one Xenium object, in another (recommended when subsetting clusters for downstream analysis)  
+{_cells from first object labelled "this cluster" & all other clusters in the object labelled "all else"_}
+  
+`HighlightCells`
+* highlight cluster(s) of choice in an Xenium object  
+{_cluster of interest labelled "these cells" & all other clusters in the object labelled "all else"_}
+
+`GenerateBoxPlot`
+* plot a boxplot of a given genes per cluster using sequencing-depth corrected counts  
+  
+`GenerateBoxPlotRaw`
+* plot a boxplot of a given genes per cluster using raw Xenium counts
+
+additional functions provided by Mark S. Cembrowski  **update these**  
+`getCentre`
+
+`getDistanceToLine`
+
+
+
+
+
+[Back to top](#top)
 
 **want a short description of the scripts that i haave. Check the folder.
 
