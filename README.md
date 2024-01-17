@@ -19,13 +19,13 @@ library(Seurat)
 # Toolkit Contents
 The following can be performed with this suite of tools:  
 * highlight UMAP clusters of interest _in situ_ across your FOV of choice
-* Create publication ready plots
+* create publication ready plots
 * tally the number of cells in each Xenium Assay Seurat object
 * merge and analyze data across multiple slices, via [UMAP dimensionality reduction](https://www.nature.com/articles/nbt.4314) and applying [cluster-based algorithms](https://www.tandfonline.com/doi/full/10.1080/15476286.2020.1728961)
 * find marker genes for unique UMAP clusters
 * create Box plots for cluster-specific marker genes (using sequencing depth-corrected or raw counts)
 * calculate the midline of any group of cells _in situ_
-* compute gene expression as a function of distance away from a set midline
+* compute gene expression as a function of distance away from a computed midline
 * perform a gene expression gradient analysis (via computing 1-Dimensional UMAP embeddings values for cells)
 
 # Function List
