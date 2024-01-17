@@ -2,7 +2,7 @@
 
 # Xenium Spatial Analysis Toolkit  
 🆇🅴🅽🅸🆄🅼 🆂🅿🅰🆃🅸🅰🅻 🅰🅽🅰🅻🆈🆂🅸🆂   
-This repository contains tools and workflows to spatially analyze cell-types using Xenium data.   
+This repository contains tools and workflows to spatially analyze cell-types using single-cell spatial transcriptomic Xenium data.   
 
 ## Table of Contents
 1. [Prep Environment](#prep-environment-installing-seurat)
