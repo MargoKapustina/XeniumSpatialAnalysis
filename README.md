@@ -37,10 +37,10 @@ The following can be performed with this suite of tools:
 * highlight subset cells from a Xenium object of choice  -- useful when subsetting cells for downstream analysis  
 {_cells from subset object labelled "these cells" & all other cells labelled "all else"_}
 
-`AutomoateBoxPlot`
+`AutomateBoxPlot`
 * plot boxplots of selected genes per cluster using sequencing-depth corrected counts  
   
-`GenerateBoxPlotRaw`
+`AutomateBoxPlotRaw`
 * plot boxplots of selected genes per cluster using raw Xenium counts  
 
 additional functions provided by Mark S. Cembrowski  **update these**  
