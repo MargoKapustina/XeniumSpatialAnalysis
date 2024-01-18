@@ -38,10 +38,10 @@ The following can be performed with this suite of tools:
 {_cells from subset object labelled "these cells" & all other cells labelled "all else"_}
 
 `AutomateBoxPlot`
-* plot boxplots of selected genes per cluster using sequencing-depth corrected counts  
+* plot boxplots of given genes per cluster using sequencing-depth corrected counts  
   
 `AutomateBoxPlotRaw`
-* plot boxplots of selected genes per cluster using raw Xenium counts  
+* plot boxplots of given genes per cluster using raw Xenium counts  
 
 additional functions provided by Mark S. Cembrowski  **update these**  
 `getCentre`
