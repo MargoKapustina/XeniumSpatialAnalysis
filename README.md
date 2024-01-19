@@ -1,10 +1,6 @@
-[slice-merged1fov.pdf](https://github.com/MargoKapustina/Xenium-spatial-tools/files/13991936/slice-merged1fov.pdf)<a name="top"/>  
-
 # Xenium Spatial Analysis Toolkit  
 🆇🅴🅽🅸🆄🅼 🆂🅿🅰🆃🅸🅰🅻 🅰🅽🅰🅻🆈🆂🅸🆂   
 This repository contains tools and workflows to spatially analyze cell-types using single-cell spatial transcriptomic Xenium data.   
-![slice-merged1fov.pdf](https://github.com/MargoKapustina/Xenium-spatial-tools/files/13991935/slice-merged1fov.pdf)
-
 
 ## Table of Contents
 1. [Prep Environment](#prep-environment-installing-seurat)
