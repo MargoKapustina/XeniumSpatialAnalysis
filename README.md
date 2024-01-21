@@ -47,9 +47,20 @@ additional functions provided by Mark S. Cembrowski  **update these**
 `getDistanceToLine`
 
 
+note: prior to running any UMAP_1 embedding plots (plotUMAP1_inSituMidline) UMAP_1 embeddings needs to be computed.
+User can run UMAP embeddings computation first via:
+```
+#subset your cluster(s) of interest
+AD = xen_atn_subregions %>% subset(idents = c('5', '6')) #gets cells in these clusters
+#visualize and check subset
+ImageDimPlot(AD, cols = "polychrome", size = 2, fov = 'X1fov') 
 
-
-
+#compute 1D UMAP embeddings
+AD<- RunPCA(AD, npcs = 30, features = rownames(AD))
+#choose number of dims for UMAP accordingly
+ElbowPlot(AD, ndims = 30, reduction = "pca")
+AD <- RunUMAP(AD, dims = 1:15, n.components = 1)
+```
 [back to top](#top)
 
 **want a short description of the scripts that i haave. Check the folder.
