@@ -1,12 +1,15 @@
 # Xenium Spatial Analysis R Toolkit  
+<img src="https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/e3f99642-03a7-4b90-ae9e-a85eab71bb97" width="20%"></img>    
 This repository contains R tools and workflows to spatially analyze cell-types using single-cell spatial transcriptomic *Xenium* data.   
 
 ## Table of Contents
 1. [Prep Environment](#prep-environment-installing-seurat)
-2. [Toolkit Contents](#toolkit-contents)
-3. [Function List](#function-list)
-   
-# Prep Environment: installing Seurat -deprecate-
+     -deprecate-
+3. [Toolkit Contents](#toolkit-contents)
+4. [Function List](#function-list)
+
+
+# Prep Environment: installing Seurat
 These tools are compatible with Seurat V5. For more information, see https://satijalab.org/seurat/articles/install_v5.   
 To install and load package:
 ```
