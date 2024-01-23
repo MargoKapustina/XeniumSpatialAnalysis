@@ -99,6 +99,9 @@ xenexc <- FindClusters(xenexc, resolution = 0.03)
 
 #visualize UMAP
 DimPlot(xenexc, raster = FALSE, cols = 'glasbey') + DarkTheme() +coord_fixed()
+
+#find the number of cells in your object
+dim(xenexc) #75058 - excitatory neuronal cells
 ```
 To highlight a cluster in your Xenium object, use `HighlightCluster()`.
 ```R
@@ -119,7 +122,7 @@ highlightCluster(highlight_obj = xenatn, within_obj = xenexc)
 (ie example ATN cells!)
 
 ## 4. Begin spatial analysis! ##
-#### Create marker gene boxplots for each cluster #### 
+#### 4a. Create marker gene boxplots for each cluster #### 
 Create boxplots for gene of interest across all clusters, using `XeniumBoxPlot()` or `XeniumBoxPlotRaw()`
 ```R
 #create vector of genes
@@ -131,6 +134,55 @@ BoxPlots = XeniumBoxPlot(object = atn, genes = my_genes)
 #or using raw counts (Xenium$counts)
 BoxPlotsRaw = XeniumBoxPlot(object = atn, genes = my_genes)
 ```
+
+#### 4b. Assess spatial gradients in gene expression #### 
+Create a 1-dimensional UMAP, plot the corresponding histogram of UMAP_1 embedding values and the UMAP_1 embedding values in situ within specified FOV. Additionally, compute the midline intersecting cells within specified FOV.
+__note:__ please compute UMAP_1 embeddings beforehand! :
+```R
+#subset cells in specific clusters (see 3a)
+AD = xen_atn_subregions %>% subset(idents = c('5', '6'))
+#visualize the subset
+ImageDimPlot(AD, cols = "polychrome", size = 2, fov = 'X1fov')
+highlightCells(highlight_obj = AD, within_obj = xen_atn_subregions)
+
+#compute 1D UMAP embeddings
+AD<- RunPCA(AD, npcs = 30, features = rownames(AD))
+#choose numbers of dims based on elbowplot
+ElbowPlot(AD, ndims = 30, reduction = "pca") 
+AD <- RunUMAP(AD, dims = 1:15, n.components = 1)
+```
+
+Run `plotUMAP1_inSituMidline()`, making sure to check how your spatial midline looks. If it looks off - please adjsut `degs` parameter. 
+```R
+AD_df_midline = plotUMAP1_inSituMidline(object = AD, FOV = 'fov', degs = 65, save_plot = TRUE)
+```
+
+#### 4c. Assess spatial gradients in gene expression #### 
+You can also create the above plots without computing the spatial midline using `plotUMAP1_inSitu()`
+```R
+AD_df = plotUMAP1_inSitu(object = AD, FOV = 'fov', save_plot = TRUE)
+```
+
+#### 5a. Assess spatial gradients in expression of individual genes #### 
+First generate Gene Expression vs Midline data for indivudal FOVs using `getExpressionvsMidline()`
+```R
+geneExpression_X1fov <- getExpressionvsMidline(AD, FOV = "X1fov", genes = c("Epha1", "Cntnap4", 'Pcp4', 'Slc17a7'), degs = 45)
+geneExpression_fov <- getExpressionvsMidline(AD, FOV = "fov", genes = c("Epha1", "Cntnap4", 'Pcp4', 'Slc17a7'), degs = 50)
+```
+Then, use `plotGeneExpressionVsMidline()` to create a pooled dataframe containing Cell IDs, coordinates (X,Y), gene expression counts for specififed gene(s), and computed distance away from spatial midline of each cell, across all FOVs in data. To achieve this, run the function on the geneExpression dataframes you genereated in the previous step with `getExpressionvsMidline()`. This function will plot gene expression data for cells and their distance away from Spatial Midline across _multiple_ FOVs.
+```R
+pooled_GeneExpression = plotGeneExpressionVsMidline(geneExpressionData = list(geneExpression_fov, geneExpression_fX1ov), genes = c("Epha1", "Cntnap4", 'Pcp4', 'Slc17a7'))
+```
+you can also run the function on just a single genExpression dataframe.
+```R
+pooled_GeneExpression = plotGeneExpressionVsMidline(geneExpressionData = list(geneExpression_fov), genes = c("Epha1", "Cntnap4", 'Pcp4', 'Slc17a7'))
+```
+It's recommended that you specifiy the same `genes` for `plotGeneExpressionVsMidline()` as `getExpressionvsMidline()`. If you would like to get gene expressiond data for more genes, run `getExpressionvsMidline()` with your new desired genes, and then run `plotGeneExpressionVsMidline()` after. If you keep the dataframe name the same, running the function will overwrite the previous gene expression dataframe stored in your environment.
+
+
+In a similar fashion to plotting gene expression data as a function of distance away from spatial midline, you can also plot the UMAP_1 embeddings as a distance away from midline. To do this, use 
+
+
 
 
 
