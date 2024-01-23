@@ -173,10 +173,15 @@ Then, use `plotGeneExpressionVsMidline()` to create a pooled dataframe containin
 ```R
 pooled_GeneExpression = plotGeneExpressionVsMidline(geneExpressionData = list(geneExpression_fov, geneExpression_fX1ov), genes = c("Epha1", "Cntnap4", 'Pcp4', 'Slc17a7'))
 ```
-you can also run the function on just a single genExpression dataframe.
+<details>
+<summary>You can also run the function on just a single genExpression dataframe.</summary>
+<pre>pooled_GeneExpression = plotGeneExpressionVsMidline(geneExpressionData = list(geneExpression_fov), genes = c("Epha1", "Cntnap4", 'Pcp4', 'Slc17a7')) </pre>
+</details>
+
 ```R
 pooled_GeneExpression = plotGeneExpressionVsMidline(geneExpressionData = list(geneExpression_fov), genes = c("Epha1", "Cntnap4", 'Pcp4', 'Slc17a7'))
 ```
+
 It's recommended that you specifiy the same `genes` for `plotGeneExpressionVsMidline()` as `getExpressionvsMidline()`. If you would like to get gene expressiond data for more genes, run `getExpressionvsMidline()` with your new desired genes, and then run `plotGeneExpressionVsMidline()` after. If you keep the dataframe name the same, running the function will overwrite the previous gene expression dataframe stored in your environment.
 
 
