@@ -222,7 +222,7 @@ Then, use `plotGeneExpressionVsMidline()` to create a pooled dataframe containin
 ```R
 #pool data and plot gene expression vs spatial midline data for multiple genes, across multiple FOVs
 #lines are gene expression values (averaged gene counts per binned cells) & histogram is number of cells in each bin 
-pooled_GeneExpression = plotGeneExpressionVsMidline(geneExpressionData = list(geneExpression_fov, geneExpression_fX1ov), genes = c("Epha1", "Cntnap4", 'Pcp4', 'Slc17a7'))
+pooled_GeneExpression = plotGeneExpressionVsMidline(geneExpressionData = list(geneExpression_fov, geneExpression_X1fov), genes = c("Epha1", "Cntnap4", 'Pcp4', 'Slc17a7'))
 ```
 > You can also run the function on just a single genExpression dataframe: 
 ```R
