@@ -3,10 +3,23 @@
 This repository contains R tools and workflows to spatially analyze cell-types using single-cell spatial transcriptomic *Xenium* data.   
 
 ## Table of Contents
-1. [Installation](#installation)
-2. [Tutorial](#tutorial)
-3. [Toolkit Contents](#toolkit-contents)
+1. [Toolkit Contents](#toolkit-contents)
+2. [Installation](#installation)
+3. [Tutorial](#tutorial)
 4. [Function List](#function-list)
+
+# Toolkit Contents
+The following can be performed with this suite of tools:  
+* highlight UMAP clusters of interest _in situ_ across your FOV of choice
+* create publication ready plots
+* tally the number of cells in each Xenium Assay Seurat object
+* merge and analyze data across multiple slices, via [UMAP dimensionality reduction](https://www.nature.com/articles/nbt.4314) and applying [cluster-based algorithms](https://www.tandfonline.com/doi/full/10.1080/15476286.2020.1728961)
+* find marker genes for unique UMAP clusters
+* create Box plots for cluster-specific marker genes (using sequencing depth-corrected or raw counts)
+* calculate the midline of any group of cells _in situ_
+* compute gene expression as a function of distance away from a computed midline
+* perform a gene expression gradient analysis (via computing 1-Dimensional UMAP embeddings values for cells)
+
 
 
 # Installation 
@@ -121,14 +134,21 @@ To highlight a cluster in your Xenium object, use `HighlightCluster()` and speci
 > * `color_palette`: Color palette for the plot  
 > * `save_plot`: Option to save plot as .pdf in working directory (TRUE, FALSE) 
 ```R
-highlightCluster(obj = xenexc, cluster_id = c('2', '6'), FOV = c('X1fov', 'X2fov'))
+highlightCluster(obj = xenexc, cluster_id = c('2', '6'), size = 2, FOV = c('X1fov', 'fov'))
 ```
+![Screen Shot 2024-01-30 at 1 34 15 PM](https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/303f28c5-da7b-47de-acd7-9e8113497a22)
+
+
+
+
 ### 3a. Subset clusters of choice for downstream analysis ### 
 Subset clusters from a Xenium object with `subset()`.
 ```R
 #subset clusters
 xen_atn = xenexc %>% subset(idents = c("2", "6"))
 ```
+
+
 #### Next, to highlight your subset object within the original object, use `HighlightCells()` and specify: #####
 * `highlight_obj`: the object you want to highlight (ie subset cells)
 * `within_obj`: the object you want to highlight your object within (ie cells plotted but not highlighted; original object)
@@ -140,8 +160,13 @@ xen_atn = xenexc %>% subset(idents = c("2", "6"))
 > * `save_plot`: Option to save plot as .pdf in working directory (TRUE, FALSE) 
 ```R
 #highlight subset of cells within original object (or any smaller object within a larger object)
-highlightCells(highlight_obj = xenatn, within_obj = xenexc)
+highlightCells(highlight_obj = xen_atn_analysis, within_obj = xenexc, size = 1)
 ```
+![Screen Shot 2024-01-30 at 1 32 59 PM](https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/89a2bc2e-0975-4b93-88b9-a0e7d6b5cdb3)
+
+
+
+
 > [!TIP]
 > #### Repeat these steps until you are satisfied with your final subset of cells. ####
 (ie example ATN cells!)
@@ -303,20 +328,6 @@ pooled_UMAP1_vsMidline = plotUMAP1_vsMidline(list(UMAP1_midline_data_fov, UMAP1_
 
 
 
-
-
-# Toolkit Contents
-The following can be performed with this suite of tools:  
-* highlight UMAP clusters of interest _in situ_ across your FOV of choice
-* create publication ready plots
-* tally the number of cells in each Xenium Assay Seurat object
-* merge and analyze data across multiple slices, via [UMAP dimensionality reduction](https://www.nature.com/articles/nbt.4314) and applying [cluster-based algorithms](https://www.tandfonline.com/doi/full/10.1080/15476286.2020.1728961)
-* find marker genes for unique UMAP clusters
-* create Box plots for cluster-specific marker genes (using sequencing depth-corrected or raw counts)
-* calculate the midline of any group of cells _in situ_
-* compute gene expression as a function of distance away from a computed midline
-* perform a gene expression gradient analysis (via computing 1-Dimensional UMAP embeddings values for cells)
-
 # Function List
 `HighlightCluster`
 * highlight cluster(s) of choice in an Xenium object  
@@ -332,9 +343,24 @@ The following can be performed with this suite of tools:
 `XeniumBoxPlotRaw`
 * plot boxplots of given genes per cluster using raw Xenium counts  
 
-additional functions provided by Mark S. Cembrowski  **update these**  
-`getCentre`
+`getExpressionvsMidline`
+* generates gene expression data away from the computed spatial midline. Supports one FOV at a time
 
-`getDistanceToLine`
+`plotGeneExpressionvsMidline`
+* plots gene expression data for cells and their distance away from Spatial Midline across multiple FOVs
+  
+`getUMAP1_MidlineData`
+* fetches UMAP_1 embeddinga values for cells, and their distance away from the computed spatial midline. Supports one FOV at a time
+
+`plotUMAP1_vsMidline`
+* plots UMAP_1 embedding values for cells and their distance away from Spatial Midline across multiple FOVs
+
+
+`plotUMAP1insitu`
+* plots 1-dimensional UMAP, the corresponding histogram of UMAP_1 embedding values, and the UMAP_1 embedding values in situ within specified FOV
+  
+`plotUMAP1inSitu_Midline`
+* plots gene expression data for cells and their distance away from Spatial Midline across multiple FOVs   
+
 
 [back to top](#top)
