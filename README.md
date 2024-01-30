@@ -9,7 +9,8 @@ This repository contains R tools and workflows to spatially analyze cell-types u
 4. [Function List](#function-list)
 
 
-# Installation
+# Installation 
+Please ensure that your R version >= 4.3.2.  
 To install and load package:
 ```R
 devtools::install_github("MargoKapustina/XeniumSpatialAnalysis")
