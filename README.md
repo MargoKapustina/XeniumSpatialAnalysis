@@ -1,6 +1,8 @@
-# Xenium Spatial Analysis R Toolkit  
-<img src="https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/e3f99642-03a7-4b90-ae9e-a85eab71bb97" width="20%"></img>    
-This repository contains R tools and workflows to spatially analyze cell-types using single-cell spatial transcriptomic *Xenium* data.   
+# Xenium Spatial Analysis: R Toolkit  
+<p align="center">
+ <img src="https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/e3f99642-03a7-4b90-ae9e-a85eab71bb97" width="20%"></img>  
+</p>   
+This repository contains R tools and workflows to spatially analyze cell-types using single-cell spatial transcriptomic Xenium data.   
 
 ## Table of Contents
 1. [Toolkit Contents](#toolkit-contents)
@@ -137,10 +139,9 @@ To highlight a cluster in your Xenium object, use `HighlightCluster()` and speci
 ```R
 highlightCluster(obj = xenexc, cluster_id = c('2', '6'), size = 2, FOV = c('X1fov', 'fov'))
 ```
-![Screen Shot 2024-01-30 at 1 34 15 PM](https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/303f28c5-da7b-47de-acd7-9e8113497a22)
-
-
-
+<p align="center">
+  <img src="https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/303f28c5-da7b-47de-acd7-9e8113497a22">
+</p>   
 
 ### 3a. Subset clusters of choice for downstream analysis ### 
 Subset clusters from a Xenium object with `subset()`.
@@ -163,14 +164,13 @@ xen_atn = xenexc %>% subset(idents = c("2", "6"))
 #highlight subset of cells within original object (or any smaller object within a larger object)
 highlightCells(highlight_obj = xen_atn_analysis, within_obj = xenexc, size = 1)
 ```
-![Screen Shot 2024-01-30 at 1 32 59 PM](https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/89a2bc2e-0975-4b93-88b9-a0e7d6b5cdb3)
-
-
+<p align="center">
+  <img src="https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/89a2bc2e-0975-4b93-88b9-a0e7d6b5cdb3"
+</p>   
 
 
 > [!TIP]
 > #### Repeat these steps until you are satisfied with your final subset of cells. ####
-(ie example ATN cells!)
 
 ## 4. Begin spatial analysis! ##
 #### 4a. Create marker gene boxplots for each cluster #### 
@@ -185,8 +185,9 @@ BoxPlots = XeniumBoxPlot(object = atn, genes = my_genes)
 #or using raw counts (these are Xenium$counts)
 BoxPlotsRaw = XeniumBoxPlot(object = atn, genes = my_genes)
 ```
-![Screen Shot 2024-01-30 at 12 53 48 PM](https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/b4252ee9-ceb6-4908-90bc-59fc7075fbd1)   
-
+<p align="center">
+  <img src="https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/b4252ee9-ceb6-4908-90bc-59fc7075fbd1"
+</p>   
 
 ### 4b. Assess spatial gradients in gene expression ###
 Create a 1-dimensional UMAP, plot the corresponding histogram of UMAP_1 embedding values and the UMAP_1 embedding values in situ within specified FOV. Additionally, compute the midline intersecting cells within specified FOV.
@@ -199,8 +200,9 @@ ImageDimPlot(AD, cols = "polychrome", size = 2, fov = 'X1fov')
 #highlight cells that we subset
 highlightCells(highlight_obj = AD, within_obj = xen_atn_subregions)
 ```
-![Screen Shot 2024-01-30 at 12 56 55 PM](https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/cd23ffa2-8034-4d6e-9bb6-8f842c6f2fe3)  
-
+<p align="center">
+<img src="https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/cd23ffa2-8034-4d6e-9bb6-8f842c6f2fe3"
+</p>   
 
 
 ```R
@@ -241,8 +243,9 @@ Run `plotUMAP1_inSituMidline()`, making sure to check how your spatial midline l
 #note: please compute UMAP_1 embeddings beforehand.
 AD_df_midline = plotUMAP1_inSituMidline(object = AD, FOV = 'X1fov', degs = 45, save_plot = TRUE)
 ```
-![Screen Shot 2024-01-30 at 1 12 15 PM](https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/57faa02e-5ff0-4b96-8b13-782fd9d00f3e)
-
+<p align="center">
+<img src="https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/cd23ffa2-8034-4d6e-9bb6-8f842c6f2fe3](https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/57faa02e-5ff0-4b96-8b13-782fd9d00f3e"
+</p>   
 
 You can also create the above plots without computing the spatial midline using `plotUMAP1_inSitu()` Specify:
 * `object` a Xenium object
@@ -256,8 +259,9 @@ You can also create the above plots without computing the spatial midline using 
 #note: please compute UMAP_1 embeddings beforehand.
 AD_df = plotUMAP1_inSitu(object = AD, FOV = 'X1fov', save_plot = TRUE)
 ```
-![Screen Shot 2024-01-30 at 1 12 44 PM](https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/be682e62-d325-4183-95a5-c682595d0e4d)
-
+<p align="center">
+<img src="https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/be682e62-d325-4183-95a5-c682595d0e4d"
+</p>   
 
 
 ### 5a. Assess spatial gradients in expression of individual genes ###
@@ -271,8 +275,11 @@ First generate Gene Expression vs Midline data for indivudal FOVs using `getExpr
 geneExpression_X1fov <- getExpressionvsMidline(AD, FOV = "X1fov", genes = c("Epha1", "Cntnap4", 'Pcp4', 'Slc17a7'), degs = 45)
 geneExpression_fov <- getExpressionvsMidline(AD, FOV = "fov", genes = c("Epha1", "Cntnap4", 'Pcp4', 'Slc17a7'), degs = 60)
 ```
+
+<p align="center">
 <img src="https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/d9741824-cd75-40af-82af-9d2beeb74410" width="40%"></img>
-<img src="https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/8b90de9d-2c71-4efe-9a17-65cf9f6b4af2" width="27%"></img>    
+<img src="https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/8b90de9d-2c71-4efe-9a17-65cf9f6b4af2" width="27%"></img>   
+</p>   
 
 Then, use `plotGeneExpressionVsMidline()` to create a pooled dataframe containing Cell IDs, coordinates (X,Y), gene expression counts for specififed gene(s), and computed distance away from spatial midline of each cell, across all FOVs in data. Running `getExpressionvsMidline()` will also plot gene expression data for cells and their distance away from Spatial Midline across _multiple_ FOVs. When using this function, please specify:
 * `geneExpressionData` List of dataframes generated with getExpressionvsMidline() across multiple FOVs
@@ -286,8 +293,9 @@ Then, use `plotGeneExpressionVsMidline()` to create a pooled dataframe containin
 #lines are gene expression values (averaged gene counts per binned cells) & histogram is number of cells in each bin 
 pooled_GeneExpression = plotGeneExpressionVsMidline(geneExpressionData = list(geneExpression_fov, geneExpression_X1fov), genes = c("Epha1", "Cntnap4", 'Pcp4', 'Slc17a7'))
 ```
-![Screen Shot 2024-01-30 at 1 08 56 PM](https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/51e57473-75c1-490f-a14d-e90c149a8793)
-
+<p align="center">
+<img src = "https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/51e57473-75c1-490f-a14d-e90c149a8793"
+</p>     
 
 > You can also run the function on just a single genExpression dataframe: 
 ```R
@@ -320,13 +328,17 @@ When using `plotUMAP1_vsMidline()` please specify:
 UMAP1_midline_data_fov <- getUMAP1_MidlineData(AD, FOV= c('fov'), degs = 65)
 UMAP1_midline_data_X1fov <- getUMAP1_MidlineData(AD, FOV= c('X1fov'), degs = 45)
 ```
-![Screen Shot 2024-01-30 at 1 14 59 PM](https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/fce46bba-5e8d-4f69-b0a1-1f69bd24e390)
+<p align="center">
+<img src = "https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/fce46bba-5e8d-4f69-b0a1-1f69bd24e390"
+</p>     
+ 
 ```R
 #pool data and plot histogram of UMAP_1 embeddings values per binned distance across multiple FOVs
 pooled_UMAP1_vsMidline = plotUMAP1_vsMidline(list(UMAP1_midline_data_fov, UMAP1_midline_data_X1fov))
 ```
-![Screen Shot 2024-01-30 at 1 17 01 PM](https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/2643f1a1-d079-4f9c-bde7-5888cdb293e5)
-
+<p align="center">
+<img src = "https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/2643f1a1-d079-4f9c-bde7-5888cdb293e5"
+</p>
 
 
 # Function List
