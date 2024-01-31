@@ -19,6 +19,7 @@ The following can be performed with this suite of tools:
 * calculate the midline of any group of cells _in situ_
 * compute gene expression as a function of distance away from a computed midline
 * perform a gene expression gradient analysis (via computing 1-Dimensional UMAP embeddings values for cells)
+* ... and more!
 
 
 
