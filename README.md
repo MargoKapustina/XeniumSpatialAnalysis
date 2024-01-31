@@ -1,7 +1,8 @@
 # Xenium Spatial Analysis: R Toolkit  
 <p align="center">
- <img src="https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/e3f99642-03a7-4b90-ae9e-a85eab71bb97" width="20%"></img>  
-</p>   
+ <img src="https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/e3f99642-03a7-4b90-ae9e-a85eab71bb97" width="12%"> 
+</p>
+
 This repository contains R tools and workflows to spatially analyze cell-types using single-cell spatial transcriptomic Xenium data.   
 
 ## Table of Contents
@@ -206,7 +207,7 @@ highlightCells(highlight_obj = AD, within_obj = xen_atn_subregions)
 
 
 ```R
-#compute 1D UMAP embeddings
+#compute UMAP_1 embeddings
 AD<- RunPCA(AD, npcs = 30, features = rownames(AD))
 #choose numbers of dims based on elbowplot
 ElbowPlot(AD, ndims = 30, reduction = "pca") 
