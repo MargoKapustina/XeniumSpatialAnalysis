@@ -42,7 +42,7 @@ When updating to a newer version of the repo:
 #remove old version
 remove.packages(XeniumSpatialAnalysis)  
 
-#reinstall from here or from the cembrowskilab/RUHi github  
+#reinstall from here or from the cembrowskilab/XeniumSpatialAnalysis github  
 devtools::install_github("MargoKapustina/XeniumSpatialAnalysis")
 ```
 
