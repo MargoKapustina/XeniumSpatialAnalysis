@@ -3,9 +3,9 @@
  <img src="https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/e3f99642-03a7-4b90-ae9e-a85eab71bb97" width="12%"> 
 </p>
 
-This repository contains R tools and workflows to spatially analyze cell-types using single-cell spatial transcriptomic Xenium data.   
+This repository contains R tools and workflows to spatially analyze cell-types using single-cell spatial transcriptomic Xenium data. Check out the [Xenium workflow](https://www.10xgenomics.com/support/software/xenium-onboard-analysis/latest).    
 ***
-Here is a **link** to data from the anterodorsal nucleus of the anterior thalamic nuclei within two slices, from this paper as a Seurat object. Download and load this data via `AD = readRDS('AD.rds')` . You can also check out the full processed object **here** from our GEO portal: _____.
+**Link** to data from the anterodorsal nucleus of the anterior thalamic nuclei within two slices, from our [Cell Reports paper](link paper) as a Seurat object. Download and load this data via `AD = readRDS('AD.rds')` . You can also check out the full processed object **here** from our GEO portal: _____.
 
 ## Table of Contents
 1. [Toolkit Contents](#toolkit-contents)
@@ -15,21 +15,23 @@ Here is a **link** to data from the anterodorsal nucleus of the anterior thalami
 
 # Toolkit Contents
 The following can be performed with this suite of tools:  
-* highlight UMAP clusters of interest _in situ_ across your FOV of choice
 * create publication ready plots
-* tally the number of cells in each Xenium Assay Seurat object
 * merge and analyze data across multiple slices, via [UMAP dimensionality reduction](https://www.nature.com/articles/nbt.4314) and applying [cluster-based algorithms](https://www.tandfonline.com/doi/full/10.1080/15476286.2020.1728961)
+* highlight UMAP clusters of interest _in situ_ across selected FOV(s)
+* tally the number of cells in each Xenium Assay Seurat object
 * find marker genes for unique UMAP clusters
 * create boxplots for cluster-specific marker genes (using sequencing depth-corrected or raw counts)
 * calculate the midline of any group of cells _in situ_
 * compute gene expression as a function of distance away from a computed midline
 * perform a gene expression gradient analysis (via computing 1-Dimensional UMAP embeddings values for cells)
+* compute UMAP_1 embeddings as a function of distance away from a computed midline
 * ... and more!
 
 
 
 # Installation 
-**Please ensure that your R version >= 4.3.2.**   
+> **Please ensure that your R version >= 4.3.2.**     
+
 To install and load package:
 ```R
 devtools::install_github("MargoKapustina/XeniumSpatialAnalysis")
@@ -52,7 +54,7 @@ Read in raw Xenium data using Seurat's `LoadXenium()` function. Make sure to set
 
 For each replicate assign a unique FOV for easier downstream processing:
 ```R
-#Margarita Kapustina, UBC 2023
+#Author: Margarita Kapustina, UBC, 2023
 #read in xenium data, and remove cells with 0 counts, save rds files.
 
 #load packages
