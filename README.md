@@ -4,6 +4,8 @@
 </p>
 
 This repository contains R tools and workflows to spatially analyze cell-types using single-cell spatial transcriptomic Xenium data.   
+***
+Here is a **link** to data from the anterodorsal nucleus of the anterior thalamic nuclei within two slices, from this paper as a Seurat object. Download and load this data via `AD = readRDS('AD.rds')` . You can also check out the full processed object **here** from our GEO portal: _____.
 
 ## Table of Contents
 1. [Toolkit Contents](#toolkit-contents)
@@ -245,7 +247,7 @@ Run `plotUMAP1_inSituMidline()`, making sure to check how your spatial midline l
 AD_df_midline = plotUMAP1_inSituMidline(object = AD, FOV = 'X1fov', degs = 45, save_plot = TRUE)
 ```
 <p align="center">
-<img width = '77%'src="https://github.com/MargoKapustina/XeniumSpatialAnalysis/assets/129800017/b0ba20b7-e03d-4bb2-9b23-e762aef10ed1"
+<img width = '75%'src="https://github.com/MargoKapustina/XeniumSpatialAnalysis/assets/129800017/b0ba20b7-e03d-4bb2-9b23-e762aef10ed1"
 </p>   
 
 
