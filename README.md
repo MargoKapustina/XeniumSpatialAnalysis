@@ -86,11 +86,11 @@ library(cowplot)
 library(ggplot2)
 
 #read in data from saved .rds files and merge all slices  
-data.dir = "X:/Cembrowski Lab/Margo/ATN-23/xenium-rds-objects-uniqueFOV/output-XETG00098__0018569__rep1_atn_ant__20231129__015936-obj.rds"
+data.dir = "myobjpath1.rds"
 S1_ant = readRDS(data.dir)
-data.dir = "X:/Cembrowski Lab/Margo/ATN-23/xenium-rds-objects-uniqueFOV/output-XETG00098__0018569__rep1_atn_int__20231129__015936-obj.rds"
+data.dir = "myobjpath2.rds"
 S1_int = readRDS(data.dir)
-data.dir = "X:/Cembrowski Lab/Margo/ATN-23/xenium-rds-objects-uniqueFOV/output-XETG00098__0018569__rep1_atn_post__20231129__015936-obj.rds"
+data.dir = "myobjpath3.rds"
 S1_post = readRDS(data.dir)
 
 #add sample metadata
@@ -173,9 +173,7 @@ highlightCells(highlight_obj = xen_atn, within_obj = xenexc, size = 1)
   <img src="https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/89a2bc2e-0975-4b93-88b9-a0e7d6b5cdb3"
 </p>   
 
-
-> [!TIP]
-> #### Repeat these steps until you are satisfied with your final subset of cells. ####
+#### Repeat these steps until you are satisfied with your resulting subset of cells. ####
 
 ## 4. Begin spatial analysis! ##
 #### 4a. Create marker gene boxplots for each cluster #### 
@@ -185,10 +183,10 @@ Create boxplots for gene of interest across all clusters, using `XeniumBoxPlot()
 my_genes= c('C1ql2','Foxp1', 'Gng13')
 
 #generate boxplots using sequencing depth corrected counts (these are SCT$counts)
-BoxPlots = XeniumBoxPlot(object = atn, genes = my_genes)
+BoxPlots = XeniumBoxPlot(object = xen_atn, genes = my_genes)
 
 #or using raw counts (these are Xenium$counts)
-BoxPlotsRaw = XeniumBoxPlot(object = atn, genes = my_genes)
+BoxPlotsRaw = XeniumBoxPlot(object = xen_atn, genes = my_genes)
 ```
 <p align="center">
   <img src="https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/b4252ee9-ceb6-4908-90bc-59fc7075fbd1"
