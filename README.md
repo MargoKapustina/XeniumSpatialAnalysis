@@ -330,7 +330,7 @@ pooled_GeneExpression = plotGeneExpressionVsMidline(geneExpressionData = list(ge
 #### _note on selecting `genes`_: ####
 > It's recommended that you specifiy the same `genes` for `plotGeneExpressionVsMidline()` as `getExpressionvsMidline()`. If you would like to get gene expressiond data for more genes, run `getExpressionvsMidline()` with your new desired genes, and then run `plotGeneExpressionVsMidline()` after. If you keep the dataframe name the same, running the function will overwrite the previous gene expression dataframe stored in your environment.
 ***
-In a similar fashion to plotting gene expression data as a function of distance away from spatial midline, you can also plot the UMAP_1 embeddings as a function of distance away from midline. To do this, use `getUMAP1_MidlineData()` then `plotUMAP1_vsMidline()`.
+In a similar fashion to plotting gene expression data as a function of distance away from spatial midline, you can also plot the UMAP_1 embeddings as a function of distance away from midline. To do this, use `getUMAP1_MidlineData()` then `plotUMAP1_vsMidline()`.   
 When using `getUMAP1_MidlineData()` please specify:
 * `object` a Xenium object
 * `FOV` FOV to extract coordinates and UMAP_1 embeddings values from
@@ -339,12 +339,6 @@ When using `getUMAP1_MidlineData()` please specify:
 > * `binwidth` Width of bins for gene expression averaging (lines) Suggested binwidth = 40 for 40micron bins (default: 40)
 > * `save_plot` Option to save plot as .eps in working directory (TRUE, FALSE)  
 
-When using `plotUMAP1_vsMidline()` please specify:
-* `UMAP1MidlineData` List of dataframes generated with getUMAP1_MidlineData() across multiple FOVs
-> __Optional__ to specify:
-> * `binNumber` Number of bins to use for histogram (bars). Suggested binNumber = total # cells in pooled data/binwidth (default: 7)
-> * `binwidth` Width of bins for gene expression averaging (lines) Suggested binwidth = 40 for 40micron bins (default: 40)
-> * `save_plot` Option to save plot as .eps in working directory (TRUE, FALSE)  
 ```R
 #generate UMAP_1 embedding values vs spatial midline data for individual FOVs, specifying degrees to define spatial midline for each individual FOV
 #will also plot coloured coordinates according to UMAP_1 embeddings and histogram of UMAP_1 embeddings values per binned distance for single FOV specified
@@ -354,7 +348,14 @@ UMAP1_midline_data_X1fov <- getUMAP1_MidlineData(AD, FOV= c('X1fov'), degs = 45)
 ```
 <p align="center">
 <img src = "https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/fce46bba-5e8d-4f69-b0a1-1f69bd24e390"
-</p>     
+</p>   
+
+When using `plotUMAP1_vsMidline()` please specify:
+* `UMAP1MidlineData` List of dataframes generated with getUMAP1_MidlineData() across multiple FOVs
+> __Optional__ to specify:
+> * `binNumber` Number of bins to use for histogram (bars). Suggested binNumber = total # cells in pooled data/binwidth (default: 7)
+> * `binwidth` Width of bins for gene expression averaging (lines) Suggested binwidth = 40 for 40micron bins (default: 40)
+> * `save_plot` Option to save plot as .eps in working directory (TRUE, FALSE)  
  
 ```R
 #pool data and plot histogram of UMAP_1 embeddings values per binned distance across multiple FOVs
