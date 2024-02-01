@@ -398,8 +398,4 @@ pooled_UMAP1_vsMidline = plotUMAP1_vsMidline(list(UMAP1_midline_data_fov, UMAP1_
 `plotUMAP1inSitu_Midline`
 * plots gene expression data for cells and their distance away from Spatial Midline across multiple FOVs  
 
-**TIP!**    
-to try out these functions on example Xenium data use `load(AD)` once packaged has been installed.
-
-
 [back to top](#top)
