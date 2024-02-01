@@ -18,7 +18,7 @@ The following can be performed with this suite of tools:
 * tally the number of cells in each Xenium Assay Seurat object
 * merge and analyze data across multiple slices, via [UMAP dimensionality reduction](https://www.nature.com/articles/nbt.4314) and applying [cluster-based algorithms](https://www.tandfonline.com/doi/full/10.1080/15476286.2020.1728961)
 * find marker genes for unique UMAP clusters
-* create Box plots for cluster-specific marker genes (using sequencing depth-corrected or raw counts)
+* create boxplots for cluster-specific marker genes (using sequencing depth-corrected or raw counts)
 * calculate the midline of any group of cells _in situ_
 * compute gene expression as a function of distance away from a computed midline
 * perform a gene expression gradient analysis (via computing 1-Dimensional UMAP embeddings values for cells)
@@ -231,7 +231,7 @@ AD<- Seurat::RunPCA(AD, npcs = 30, features = rownames(AD))
 Seurat::ElbowPlot(AD, ndims = 30, reduction = "pca")
 AD <- Seurat::RunUMAP(AD, dims = 1:15, n.components = 1)
 ```
-*note*: these functions are compatible with Seurat, for more information see [https://satijalab.org](https://satijalab.org/seurat/articles/install_v5)
+For more more info on Seurat functions see (https://satijalab.org/seurat/articles/install_v5)
   
 Run `plotUMAP1_inSituMidline()`, making sure to check how your spatial midline looks. If it looks off - please adjsut `degs` parameter. Specify:
 * `object` a Xenium object
@@ -245,8 +245,9 @@ Run `plotUMAP1_inSituMidline()`, making sure to check how your spatial midline l
 AD_df_midline = plotUMAP1_inSituMidline(object = AD, FOV = 'X1fov', degs = 45, save_plot = TRUE)
 ```
 <p align="center">
-<img src="https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/cd23ffa2-8034-4d6e-9bb6-8f842c6f2fe3](https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/57faa02e-5ff0-4b96-8b13-782fd9d00f3e"
+<img width = '77%'src="https://github.com/MargoKapustina/XeniumSpatialAnalysis/assets/129800017/b0ba20b7-e03d-4bb2-9b23-e762aef10ed1"
 </p>   
+
 
 You can also create the above plots without computing the spatial midline using `plotUMAP1_inSitu()` Specify:
 * `object` a Xenium object
@@ -261,7 +262,7 @@ You can also create the above plots without computing the spatial midline using 
 AD_df = plotUMAP1_inSitu(object = AD, FOV = 'X1fov', save_plot = TRUE)
 ```
 <p align="center">
-<img src="https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/be682e62-d325-4183-95a5-c682595d0e4d"
+<img width = '77%' src="https://github.com/MargoKapustina/XeniumSpatialAnalysis/assets/129800017/6bc805ec-c823-41f2-9542-07ff80c52184"
 </p>   
 
 
@@ -273,8 +274,8 @@ First generate Gene Expression vs Midline data for indivudal FOVs using `getExpr
 * `degs` User-defined angle, defined in degrees, that intersects centrepoint in midline computation
 ```R
 #generate gene expression vs spatial midline data for individual FOVs, for any gene(s) in your assay
-geneExpression_X1fov <- getExpressionvsMidline(AD, FOV = "X1fov", genes = c("Epha1", "Cntnap4", 'Pcp4', 'Slc17a7'), degs = 45)
-geneExpression_fov <- getExpressionvsMidline(AD, FOV = "fov", genes = c("Epha1", "Cntnap4", 'Pcp4', 'Slc17a7'), degs = 60)
+geneExpression_X1fov <- getExpressionvsMidline(AD, FOV = "X1fov", genes = c("Epha1", "Cntnap4", 'Pcp4', 'Mdga1'), degs = 45)
+geneExpression_fov <- getExpressionvsMidline(AD, FOV = "fov", genes = c("Epha1", "Cntnap4", 'Pcp4', 'Mdga1'), degs = 60)
 ```
 
 <p align="center">
@@ -292,21 +293,41 @@ Then, use `plotGeneExpressionVsMidline()` to create a pooled dataframe containin
 ```R
 #pool data and plot gene expression vs spatial midline data for multiple genes, across multiple FOVs
 #lines are gene expression values (averaged gene counts per binned cells) & histogram is number of cells in each bin 
-pooled_GeneExpression = plotGeneExpressionVsMidline(geneExpressionData = list(geneExpression_fov, geneExpression_X1fov), genes = c("Epha1", "Cntnap4", 'Pcp4', 'Slc17a7'))
+pooled_GeneExpression = plotGeneExpressionVsMidline(geneExpressionData = list(geneExpression_fov, geneExpression_X1fov), genes = c("Epha1", "Cntnap4", 'Pcp4', 'Mdga1'))
 ```
 <p align="center">
-<img src = "https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/51e57473-75c1-490f-a14d-e90c149a8793"
+<img width = '77%' src = "https://github.com/MargoKapustina/XeniumSpatialAnalysis/assets/129800017/6d1097da-6be0-4a7c-8d41-b43f36e0ac55"
 </p>     
+ 
+> You will also get a readout of the colour legend per genes and the number of cells per bin when running this function   
+ 
+```
+Colour Scheme (Gene : colour):
+Epha1 : red 
+Cntnap4 : green 
+Pcp4 : pink 
+Mdga1 : black 
+[1] "Generating plot..."
+Number of cells in each bin (note: plotted are counts/100):
+Beginning on left-most bin...
+Bin: 1 , Count: 11 
+Bin: 2 , Count: 28 
+Bin: 3 , Count: 66 
+Bin: 4 , Count: 78 
+Bin: 5 , Count: 29 
+Bin: 6 , Count: 21 
+Bin: 7 , Count: 1 
+``` 
 
 > You can also run the function on just a single genExpression dataframe: 
 ```R
 #pool data and plot gene expression vs spatial midline data for multiple genes, for one FOV
 #lines are gene expression values (averaged gene counts per binned cells) & histogram is number of cells in each bin 
-pooled_GeneExpression = plotGeneExpressionVsMidline(geneExpressionData = list(geneExpression_fov), genes = c("Epha1", "Cntnap4", 'Pcp4', 'Slc17a7'))
+pooled_GeneExpression = plotGeneExpressionVsMidline(geneExpressionData = list(geneExpression_fov), genes = c("Epha1", "Cntnap4", 'Pcp4', 'Mdga1'))
 ```
-### Selecting `genes`: ###  
+#### _note on selecting `genes`_: ####
 > It's recommended that you specifiy the same `genes` for `plotGeneExpressionVsMidline()` as `getExpressionvsMidline()`. If you would like to get gene expressiond data for more genes, run `getExpressionvsMidline()` with your new desired genes, and then run `plotGeneExpressionVsMidline()` after. If you keep the dataframe name the same, running the function will overwrite the previous gene expression dataframe stored in your environment.
-
+***
 In a similar fashion to plotting gene expression data as a function of distance away from spatial midline, you can also plot the UMAP_1 embeddings as a function of distance away from midline. To do this, use `getUMAP1_MidlineData()` then `plotUMAP1_vsMidline()`.
 When using `getUMAP1_MidlineData()` please specify:
 * `object` a Xenium object
@@ -368,7 +389,6 @@ pooled_UMAP1_vsMidline = plotUMAP1_vsMidline(list(UMAP1_midline_data_fov, UMAP1_
 
 `plotUMAP1_vsMidline`
 * plots UMAP_1 embedding values for cells and their distance away from Spatial Midline across multiple FOVs
-
 
 `plotUMAP1insitu`
 * plots 1-dimensional UMAP, the corresponding histogram of UMAP_1 embedding values, and the UMAP_1 embedding values in situ within specified FOV
