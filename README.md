@@ -167,7 +167,7 @@ xen_atn = xenexc %>% subset(idents = c("2", "6"))
 > * `save_plot`: Option to save plot as .pdf in working directory (TRUE, FALSE) 
 ```R
 #highlight subset of cells within original object (or any smaller object within a larger object)
-highlightCells(highlight_obj = xen_atn_analysis, within_obj = xenexc, size = 1)
+highlightCells(highlight_obj = xen_atn, within_obj = xenexc, size = 1)
 ```
 <p align="center">
   <img src="https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/89a2bc2e-0975-4b93-88b9-a0e7d6b5cdb3"
