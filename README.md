@@ -398,7 +398,7 @@ pooled_UMAP1_vsMidline = plotUMAP1_vsMidline(list(UMAP1_midline_data_fov, UMAP1_
   
 `plotUMAP1inSitu_Midline`
 * plots gene expression data for cells and their distance away from Spatial Midline across multiple FOVs
-
+   
 Interested in recreating the tutorial? Here is how to subset the AD from our processed Xenium seurat object:  
 ```R
 #read in seurat obj from .rds file (access via GEO portal)
