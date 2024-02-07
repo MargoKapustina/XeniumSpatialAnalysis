@@ -208,13 +208,6 @@ highlightCells(highlight_obj = AD, within_obj = xen_atn_subregions)
 </p>   
 
 
-```R
-#compute UMAP_1 embeddings
-AD<- RunPCA(AD, npcs = 30, features = rownames(AD))
-#choose numbers of dims based on elbowplot
-ElbowPlot(AD, ndims = 30, reduction = "pca") 
-AD <- RunUMAP(AD, dims = 1:15, n.components = 1)
-```
 ### 4c. Assess spatial gradients in gene expression ### 
 
 > [!IMPORTANT]  
@@ -227,6 +220,8 @@ AD = xen_atn_subregions %>% subset(idents = c('5', '6'))
 #(optional) visualize and check cells included in subset 
 Seurat::ImageDimPlot(AD, cols = "polychrome", size = 2, fov = 'X1fov') 
 
+#load required package
+library(Seurat)
 #compute 1D UMAP embeddings
 AD<- Seurat::RunPCA(AD, npcs = 30, features = rownames(AD))
 #choose number of dims for UMAP accordingly
