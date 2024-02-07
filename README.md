@@ -177,7 +177,7 @@ highlightCells(highlight_obj = xen_atn, within_obj = xenexc, size = 1)
 
 ## 4. Begin spatial analysis! ##
 #### 4a. Create marker gene boxplots for each cluster #### 
-Create boxplots for gene of interest across all clusters, using `XeniumBoxPlot()` or `XeniumBoxPlotRaw()`
+Create boxplots for gene of interest across all clusters, using `XeniumBoxPlot()` or `XeniumBoxPlot()`
 ```R
 #create vector of genes
 my_genes= c('C1ql2','Foxp1', 'Gng13')
@@ -186,7 +186,7 @@ my_genes= c('C1ql2','Foxp1', 'Gng13')
 BoxPlots = XeniumBoxPlot(object = xen_atn, genes = my_genes)
 
 #or using raw counts (these are Xenium$counts)
-BoxPlotsRaw = XeniumBoxPlot(object = xen_atn, genes = my_genes)
+BoxPlotsRaw = XeniumBoxPlotRaw(object = xen_atn, genes = my_genes)
 ```
 <p align="center">
   <img src="https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/b4252ee9-ceb6-4908-90bc-59fc7075fbd1"
