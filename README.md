@@ -5,7 +5,7 @@
 
 This repository contains R tools and workflows to spatially analyze cell-types using single-cell spatial transcriptomic Xenium data. Check out the [Xenium workflow](https://www.10xgenomics.com/support/software/xenium-onboard-analysis/latest).    
 ***
-We will use the anterodorsal nucleus of the anterior thalamic nuclei within two brain slices from our [Cell Reports paper](link paper) to show how to examine gene expression gradients. You can also check out the raw data and Seurat processed object at our [GEO portal](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE227627).
+We will use the anterodorsal nucleus of the anterior thalamic nuclei within two brain slices from our [Cell Reports paper](link paper) to demonstrate how to examine gene expression gradients. You can also check out the raw data and full Seurat processed object at our [GEO portal](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE227627), or download just the anterodorsal nucleus of the ATN in two slices [here](https://osf.io/zae5v/?view_only=27b80485b12441478755fe61613743e3) in `.rds` file format.
 
 ## Overview
 1. [Toolkit Contents](#toolkit-contents)
@@ -394,7 +394,7 @@ pooled_UMAP1_vsMidline = plotUMAP1_vsMidline(list(UMAP1_midline_data_fov, UMAP1_
 `plotUMAP1inSitu_Midline`
 * plots gene expression data for cells and their distance away from Spatial Midline across multiple FOVs
    
-Interested in recreating the tutorial? Here is how to subset the AD from our processed Xenium seurat object:  
+Interested in recreating the tutorial from our processed Xenium seurat object?
 ```R
 #read in seurat obj from .rds file (access via GEO portal)
 xen_atn_analysis = readRDS('xen_atn_analysis.rds')
@@ -403,5 +403,7 @@ xen_atn_subregions = xen_atn_analysis
 xen_atn_subregions <- FindClusters(xen_atn_subregions, resolution = 0.7)
 AD = xen_atn_subregions %>% subset(idents = c('5', '6')
 ```
+
+
 
 [back to top](#top)
