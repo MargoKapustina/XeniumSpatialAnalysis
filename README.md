@@ -397,7 +397,7 @@ pooled_UMAP1_vsMidline = plotUMAP1_vsMidline(list(UMAP1_midline_data_fov, UMAP1_
 `plotUMAP1inSitu_Midline`
 * plots gene expression data for cells and their distance away from Spatial Midline across multiple FOVs
    
-Interested in recreating the tutorial from our processed Xenium seurat object?
+> Interested in recreating the tutorial from our processed Xenium seurat object?
 ```R
 #read in seurat obj from .rds file (access via GEO portal)
 xen_atn_analysis = readRDS('xen_atn_analysis.rds')
@@ -405,6 +405,9 @@ xen_atn_analysis = readRDS('xen_atn_analysis.rds')
 xen_atn_subregions = xen_atn_analysis
 xen_atn_subregions <- FindClusters(xen_atn_subregions, resolution = 0.7)
 AD = xen_atn_subregions %>% subset(idents = c('5', '6')
+
+## or read in AD data directly (fovs included: fov, X1fov) access via OSF portal
+AD = readRDS(exampleAD.rds)
 ```
 
 
