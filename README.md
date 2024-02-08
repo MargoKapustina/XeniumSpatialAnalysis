@@ -4,7 +4,7 @@
 </p>
 
 
-This repository contains R tools and workflows to spatially analyze cell-types using single-cell spatial transcriptomic Xenium data. Check out the [Xenium workflow](https://www.10xgenomics.com/support/software/xenium-onboard-analysis/latest).    
+This repository contains R tools and workflows for spatial analysis of cell-types using single-cell spatial transcriptomic Xenium data. Check out the [Xenium workflow](https://www.10xgenomics.com/support/software/xenium-onboard-analysis/latest).    
 ***
 We will use the anterodorsal nucleus of the anterior thalamic nuclei within two brain slices from our [Cell Reports paper](in Press, link pending) to demonstrate how to examine gene expression gradients. You can also check out the raw data and full Seurat processed object at our [GEO portal](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE227627), or download just the anterodorsal nucleus of the ATN in two slices [here](https://osf.io/zae5v/?view_only=27b80485b12441478755fe61613743e3) in `.rds` file format.
 
@@ -41,7 +41,7 @@ library(XeniumSpatialAnalysis)
 When updating to a newer version of the repo:
 ```R
 #remove old version
-remove.packages(XeniumSpatialAnalysis)  
+remove.packages("XeniumSpatialAnalysis")  
 
 #reinstall from here or from the cembrowskilab/XeniumSpatialAnalysis github  
 devtools::install_github("MargoKapustina/XeniumSpatialAnalysis")
@@ -114,7 +114,7 @@ For more info see [Seurat's vigentte](https://satijalab.org/seurat/articles/seur
 merge <- SCTransform(merge, assay = "Xenium")
 #remove oligos and endothelial cells - your genes of choice here
 xenexc = merge %>% subset(Slc17a6 > 0 & Opalin ==0 & Sox10 ==0 & Sox17 ==0)
-#vizualize subset of cells in specified FOV
+#visualize subset of cells in specified FOV
 ImageDimPlot(xenexc, fov = 'X1fov')
 
 #run analysis
@@ -265,7 +265,7 @@ AD_df = plotUMAP1_inSitu(object = AD, FOV = 'X1fov', save_plot = TRUE)
 
 
 ### 5a. Assess spatial gradients in expression of individual genes ###
-First generate Gene Expression vs Midline data for indivudal FOVs using `getExpressionvsMidline()`. When using this function, please specify:
+First generate Gene Expression vs Midline data for individual FOVs using `getExpressionvsMidline()`. When using this function, please specify:
 * `object` a Xenium object
 * `genes` Character vector of gene names to fetch expression data for
 * `FOV` FOV to extract coordinates from
