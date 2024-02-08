@@ -391,7 +391,7 @@ pooled_UMAP1_vsMidline = plotUMAP1_vsMidline(list(UMAP1_midline_data_fov, UMAP1_
 `plotUMAP1_vsMidline`
 * plots UMAP_1 embedding values for cells and their distance away from Spatial Midline across multiple FOVs
 
-`plotUMAP1insitu`
+`plotUMAP1inSitu`
 * plots 1-dimensional UMAP, the corresponding histogram of UMAP_1 embedding values, and the UMAP_1 embedding values in situ within specified FOV
   
 `plotUMAP1inSitu_Midline`
@@ -404,7 +404,7 @@ xen_atn_analysis = readRDS('xen_atn_analysis.rds')
 #increase resolution "high/fine resolution"
 xen_atn_subregions = xen_atn_analysis
 xen_atn_subregions <- FindClusters(xen_atn_subregions, resolution = 0.7)
-AD = xen_atn_subregions %>% subset(idents = c('5', '6')
+AD = xen_atn_subregions %>% subset(idents = c('5', '6'))
 
 ## or read in AD data directly (fovs included: fov, X1fov) access via OSF portal
 AD = readRDS('exampleAD.rds')
