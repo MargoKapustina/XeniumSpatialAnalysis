@@ -386,7 +386,7 @@ pooled_UMAP1_vsMidline = plotUMAP1_vsMidline(list(UMAP1_midline_data_fov, UMAP1_
 * plots gene expression data for cells and their distance away from Spatial Midline across multiple FOVs
   
 `getUMAP1_MidlineData`
-* fetches UMAP_1 embeddinga values for cells, and their distance away from the computed spatial midline. Supports one FOV at a time
+* fetches UMAP_1 embedding values for cells, and their distance away from the computed spatial midline. Supports one FOV at a time
 
 `plotUMAP1_vsMidline`
 * plots UMAP_1 embedding values for cells and their distance away from Spatial Midline across multiple FOVs
