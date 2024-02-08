@@ -298,11 +298,11 @@ pooled_GeneExpression = plotGeneExpressionVsMidline(geneExpressionData = list(ge
 <p align="center">
 <img width = '77%' src = "https://github.com/MargoKapustina/XeniumSpatialAnalysis/assets/129800017/6d1097da-6be0-4a7c-8d41-b43f36e0ac55"
 </p>     
- 
-> You will also get a readout of the colour legend per genes and the number of cells per bin when running this function   
- 
-```
-Colour Scheme (Gene : colour):
+
+
+<details>
+<summary>You will also get a readout of the colour legend per genes and the number of cells per bin when running this function</summary>
+<pre>Colour Scheme (Gene : colour):
 Epha1 : red 
 Cntnap4 : green 
 Pcp4 : pink 
@@ -316,8 +316,8 @@ Bin: 3 , Count: 66
 Bin: 4 , Count: 78 
 Bin: 5 , Count: 29 
 Bin: 6 , Count: 21 
-Bin: 7 , Count: 1 
-``` 
+Bin: 7 , Count: 1 </pre>
+</details>  
 
 > You can also run the function on just a single genExpression dataframe: 
 ```R
