@@ -407,7 +407,7 @@ xen_atn_subregions <- FindClusters(xen_atn_subregions, resolution = 0.7)
 AD = xen_atn_subregions %>% subset(idents = c('5', '6')
 
 ## or read in AD data directly (fovs included: fov, X1fov) access via OSF portal
-AD = readRDS(exampleAD.rds)
+AD = readRDS('exampleAD.rds')
 ```
 
 
