@@ -51,7 +51,7 @@ devtools::install_github("MargoKapustina/XeniumSpatialAnalysis")
  
 ## 1. Read in Data ##
 ### Read in raw Xenium data ### 
-Read in raw Xenium data using Seurat's `LoadXenium()` function. Make sure to set unique FOV names for each slice for easier downstream processing. The code here also remoces cells with zero counts, and saves data as .rds file in a specified directory. 
+Read in raw Xenium data using Seurat's `LoadXenium()` function. Make sure to set unique FOV names for each slice for easier downstream processing. The code here also removes cells with zero counts, and saves data as .rds file in a specified directory. 
 
 For each replicate assign a unique FOV for easier downstream processing:
 ```R
