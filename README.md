@@ -212,24 +212,26 @@ highlightCells(highlight_obj = AD, within_obj = xen_atn_subregions)
 ### 4c. Assess spatial gradients in gene expression ### 
 
 > [!IMPORTANT]  
-> **Prior to running any 1D UMAP plots (i.e. plotUMAP1_inSituMidline) UMAP_1 embeddings must be computed.**
-
-User can compute UMAP_1 embeddings via:  
-```R
-#subset your cluster(s) of interest
-AD = xen_atn_subregions %>% subset(idents = c('5', '6'))
-#(optional) visualize and check cells included in subset 
-Seurat::ImageDimPlot(AD, cols = "polychrome", size = 2, fov = 'X1fov') 
-
-#load required package
-library(Seurat)
-#compute 1D UMAP embeddings
-AD<- Seurat::RunPCA(AD, npcs = 30, features = rownames(AD))
-#choose number of dims for UMAP accordingly
-Seurat::ElbowPlot(AD, ndims = 30, reduction = "pca")
-AD <- Seurat::RunUMAP(AD, dims = 1:15, n.components = 1)
-```
-For more more info on Seurat functions see (https://satijalab.org/seurat/articles/install_v5)
+> **Prior to running any 1D UMAP plots (i.e. plotUMAP1_inSituMidline) UMAP_1 embeddings must be computed.**  
+> <details>
+> <summary>User can compute UMAP_1 embeddings using Seurat </summary>
+> <pre>
+> #subset your cluster(s) of interest
+> AD = xen_atn_subregions %>% subset(idents = c('5', '6'))
+>
+>  #(optional) visualize and check cells included in subset 
+> Seurat::ImageDimPlot(AD, cols = "polychrome", size = 2, fov = 'X1fov') 
+>
+>  #load required package
+> library(Seurat)
+>  #compute 1D UMAP embeddings
+> AD<- Seurat::RunPCA(AD, npcs = 30, features = rownames(AD))
+>  #choose number of dims for UMAP accordingly
+> Seurat::ElbowPlot(AD, ndims = 30, reduction = "pca")
+> AD <- Seurat::RunUMAP(AD, dims = 1:15, n.components = 1)
+>
+> For more more info on Seurat functions see (https://satijalab.org/seurat/articles/install_v5) </pre>
+> </details>
   
 Run `plotUMAP1_inSituMidline()`, making sure to check how your spatial midline looks. If it looks off - please adjsut `degs` parameter. Specify:
 * `object` a Xenium object
