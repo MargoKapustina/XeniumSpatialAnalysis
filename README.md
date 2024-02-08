@@ -102,7 +102,6 @@ S1_post@meta.data$sample = 'S1_post'
 #merge slices
 merge = merge(S1_ant, S1_int)
 merge = merge(merge, S1_post)
-merge = merge(merge, S2_ant)
 ```
 ## 3. Analyze data ##
 ### 3a. Analyze merged data ### 
@@ -185,7 +184,6 @@ my_genes= c('C1ql2','Foxp1', 'Gng13')
 
 #generate boxplots using sequencing depth corrected counts (these are SCT$counts)
 BoxPlots = XeniumBoxPlot(object = xen_atn, genes = my_genes)
-
 #or using raw counts (these are Xenium$counts)
 BoxPlotsRaw = XeniumBoxPlotRaw(object = xen_atn, genes = my_genes)
 ```
@@ -232,6 +230,8 @@ highlightCells(highlight_obj = AD, within_obj = xen_atn_subregions)
 >
 > For more more info on Seurat functions see (https://satijalab.org/seurat/articles/install_v5) </pre>
 > </details>
+
+***
   
 Run `plotUMAP1_inSituMidline()`, making sure to check how your spatial midline looks. If it looks off - please adjsut `degs` parameter. Specify:
 * `object` a Xenium object
