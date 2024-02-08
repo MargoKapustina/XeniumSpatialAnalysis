@@ -366,7 +366,7 @@ pooled_UMAP1_vsMidline = plotUMAP1_vsMidline(list(UMAP1_midline_data_fov, UMAP1_
 
 # Function List
 `HighlightCluster`
-* highlight cluster(s) of choice in an Xenium object  
+* highlight cluster(s) of choice in a Xenium object  
 {_cluster of interest labelled "this cluster" & all other clusters in the object labelled "all else"_}
 
 `HighlightCells`
