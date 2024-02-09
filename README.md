@@ -235,7 +235,7 @@ ii. Plot the corresponding histogram of UMAP_1 embedding values & the UMAP_1 emb
 iii. Compute the midline intersecting cells within specified FOV     
 
   
-Run `plotUMAP1_inSituMidline()`, making sure to check how your spatial midline looks. If it looks off - please adjsut `degs` parameter. Specify:
+First, run `plotUMAP1_inSituMidline()`, making sure to check how your spatial midline looks. If it looks off - please adjsut `degs` parameter. Specify:
 * `object` a Xenium object
 * `gene`s Character vector of gene names to fetch expression data for
 * `FOV` FOV to extract coordinates from
