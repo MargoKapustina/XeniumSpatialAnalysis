@@ -269,7 +269,7 @@ AD_df = plotUMAP1_inSitu(object = AD, FOV = 'X1fov', save_plot = TRUE)
 
 
 ### 5b. Perform spatial gene expression analysis using individual genes ###
-First generate Gene Expression vs Midline data for individual FOVs using `getExpressionvsMidline()`. When using this function, please specify:
+First generate Gene Expression vs Midline data for individual FOVs using `getExpressionvsMidline()`. Make sure to visually assess whether your midline intersects your cells appropriatley. When using this function, please specify:
 * `object` a Xenium object
 * `genes` Character vector of gene names to fetch expression data for
 * `FOV` FOV to extract coordinates from
