@@ -6,7 +6,7 @@
 
 This repository contains R tools and workflows for spatial analysis of cell-types using single-cell spatial transcriptomic Xenium data. Check out the [Xenium workflow](https://www.10xgenomics.com/support/software/xenium-onboard-analysis/latest).    
 ***
-We will use the anterodorsal nucleus of the anterior thalamic nuclei within two brain slices from our paper (in Press, DOI pending) to demonstrate how to examine gene expression gradients. You can also check out the raw data and full Seurat processed object at our [GEO portal](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE227627), or download just the anterodorsal nucleus of the ATN in two slices [here](https://osf.io/zae5v/?view_only=27b80485b12441478755fe61613743e3) in `.rds` file format to follow the tutorial. 
+We will use the anterodorsal nucleus of the anterior thalamic nuclei (ATN) within two brain slices from our paper (in Press, DOI pending) to demonstrate how to examine gene expression gradients. You can also check out the raw data and full Seurat processed object at our [GEO portal](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE227627), or download just the anterodorsal nucleus of the ATN in two slices [here](https://osf.io/zae5v/?view_only=27b80485b12441478755fe61613743e3) in `.rds` file format to follow the tutorial. 
 
 ## Overview
 1. [Toolkit Contents](#toolkit-contents)
