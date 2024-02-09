@@ -80,7 +80,7 @@ rm(obj)
 ### Merge data across slices and animals ### 
 Read in data from `.rds` files, add sample `metadata` to differentiate slices, and `merge` slices. 
 ```R
-#load libraries
+#load packages
 library(Seurat)
 library(dplyr)
 library(cowplot)
@@ -229,7 +229,7 @@ highlightCells(highlight_obj = AD, within_obj = xen_atn_subregions)
 
 ## 5. Perform your spatial gradient analysis ##
 ### 5a. Perform spatial gene expression analysis using UMAP_1 embeddings ###
-Now, we will:       
+Here, we will:    
 i. Create a 1-dimensional UMAP   
 ii. Plot the corresponding histogram of UMAP_1 embedding values & the UMAP_1 embedding values *in situ* within specified FOV   
 iii. Compute the midline intersecting cells within specified FOV     
