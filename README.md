@@ -148,7 +148,7 @@ highlightCluster(obj = xenexc, cluster_id = c('2', '6'), size = 2, FOV = c('X1fo
   <img src="https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/303f28c5-da7b-47de-acd7-9e8113497a22">
 </p>   
 
-### 3a. Subset clusters of choice for downstream analysis ### 
+### 3b. Subset clusters of choice for downstream analysis ### 
 Subset clusters from a Xenium object with `subset()`.
 ```R
 #subset clusters
@@ -175,9 +175,9 @@ highlightCells(highlight_obj = xen_atn, within_obj = xenexc, size = 1)
 
 #### Repeat these steps until you are satisfied with your resulting subset of cells. ####
 
-## 4. Begin spatial analysis! ##
+## 4. Prep your spatial gradient analysis ##
 #### 4a. Create marker gene boxplots for each cluster #### 
-Create boxplots for gene of interest across all clusters, using `XeniumBoxPlot()` or `XeniumBoxPlot()`
+Create boxplots for gene of interest across all clusters, using `XeniumBoxPlot()` or `XeniumBoxPlotRaw()`
 ```R
 #create vector of genes
 my_genes= c('C1ql2','Foxp1', 'Gng13')
@@ -191,7 +191,7 @@ BoxPlotsRaw = XeniumBoxPlotRaw(object = xen_atn, genes = my_genes)
   <img src="https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/b4252ee9-ceb6-4908-90bc-59fc7075fbd1"
 </p>   
 
-### 4b. Assess spatial gradients in gene expression ###
+### 4b. Visualize clusters chosen for analysis in space ###
 Create a 1-dimensional UMAP, plot the corresponding histogram of UMAP_1 embedding values and the UMAP_1 embedding values in situ within specified FOV. Additionally, compute the midline intersecting cells within specified FOV.
 __note:__ please compute UMAP_1 embeddings beforehand! :
 ```R
@@ -205,9 +205,6 @@ highlightCells(highlight_obj = AD, within_obj = xen_atn_subregions)
 <p align="center">
 <img src="https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/cd23ffa2-8034-4d6e-9bb6-8f842c6f2fe3"
 </p>   
-
-
-### 4c. Assess spatial gradients in gene expression ### 
 
 > [!IMPORTANT]  
 > **Prior to running any 1D UMAP plots (i.e. plotUMAP1_inSituMidline) UMAP_1 embeddings must be computed.**  
@@ -231,8 +228,8 @@ highlightCells(highlight_obj = AD, within_obj = xen_atn_subregions)
 > For more more info on Seurat functions see (https://satijalab.org/seurat/articles/install_v5) </pre>
 > </details>
 
-***
-  
+## 5. Perform your spatial gradient analysis ##
+### 5a. Perform spatial gene expression analysis using UMAP_1 embeddings ###
 Run `plotUMAP1_inSituMidline()`, making sure to check how your spatial midline looks. If it looks off - please adjsut `degs` parameter. Specify:
 * `object` a Xenium object
 * `gene`s Character vector of gene names to fetch expression data for
@@ -266,7 +263,7 @@ AD_df = plotUMAP1_inSitu(object = AD, FOV = 'X1fov', save_plot = TRUE)
 </p>   
 
 
-### 5a. Assess spatial gradients in expression of individual genes ###
+### 5b. Perform spatial gene expression analysis using individual genes ###
 First generate Gene Expression vs Midline data for individual FOVs using `getExpressionvsMidline()`. When using this function, please specify:
 * `object` a Xenium object
 * `genes` Character vector of gene names to fetch expression data for
@@ -281,8 +278,9 @@ geneExpression_fov <- getExpressionvsMidline(AD, FOV = "fov", genes = c("Epha1",
 <p align="center">
 <img src="https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/d9741824-cd75-40af-82af-9d2beeb74410" width="40%"></img>
 <img src="https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/8b90de9d-2c71-4efe-9a17-65cf9f6b4af2" width="27%"></img>   
-</p>   
+</p>
 
+***
 Then, use `plotGeneExpressionVsMidline()` to create a pooled dataframe containing Cell IDs, coordinates (X,Y), gene expression counts for specififed gene(s), and computed distance away from spatial midline of each cell, across all FOVs in data. Running `getExpressionvsMidline()` will also plot gene expression data for cells and their distance away from Spatial Midline across _multiple_ FOVs. When using this function, please specify:
 * `geneExpressionData` List of dataframes generated with getExpressionvsMidline() across multiple FOVs
 * `genes` Character vector of gene names to fetch expression data for
