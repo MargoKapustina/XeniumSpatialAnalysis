@@ -192,8 +192,7 @@ BoxPlotsRaw = XeniumBoxPlotRaw(object = xen_atn, genes = my_genes)
 </p>   
 
 ### 4b. Visualize clusters chosen for analysis in space ###
-Create a 1-dimensional UMAP, plot the corresponding histogram of UMAP_1 embedding values and the UMAP_1 embedding values in situ within specified FOV. Additionally, compute the midline intersecting cells within specified FOV.
-__note:__ please compute UMAP_1 embeddings beforehand! :
+Before performing your spatial gradient analysis or compute the spatial midline, first visualize your cells in space with `highlightCells()`   
 ```R
 #subset cells in specific clusters (see 3a)
 AD = xen_atn_subregions %>% subset(idents = c('5', '6'))
@@ -230,6 +229,12 @@ highlightCells(highlight_obj = AD, within_obj = xen_atn_subregions)
 
 ## 5. Perform your spatial gradient analysis ##
 ### 5a. Perform spatial gene expression analysis using UMAP_1 embeddings ###
+The following analysis will:    
+i. Create a 1-dimensional UMAP   
+ii. Plot the corresponding histogram of UMAP_1 embedding values & the UMAP_1 embedding values *in situ* within specified FOV   
+iii. Compute the midline intersecting cells within specified FOV     
+
+  
 Run `plotUMAP1_inSituMidline()`, making sure to check how your spatial midline looks. If it looks off - please adjsut `degs` parameter. Specify:
 * `object` a Xenium object
 * `gene`s Character vector of gene names to fetch expression data for
