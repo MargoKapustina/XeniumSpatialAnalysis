@@ -156,7 +156,7 @@ plotUMAP1_vsMidline <- function(UMAP1MidlineData,
   # ggplot2 Visualization
   #show UMAP_1 embeddings as a line graph, as a distance away from midline
   p1 = ggplot2::ggplot(pooled_UMAP_df,ggplot2::aes(x = dLine)) +
-    ggplot2::geom_histogram(ggplot2::aes(y = stat(count / 100)), bins = binNumber, boundary= 0, colour = 'green')+
+    ggplot2::geom_histogram(ggplot2::aes(y = ggplot2::after_stat(count / 100)), bins = binNumber, boundary= 0, colour = 'green')+
     ggplot2::coord_cartesian(xlim = c(-500, 500), ylim =c(-6,8))+
     ggplot2::xlab('Distance away from Spatial Midline')+
     ggplot2::ylab('Cells per bin/100')+
