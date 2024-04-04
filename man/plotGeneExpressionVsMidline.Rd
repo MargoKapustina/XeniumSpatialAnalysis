@@ -9,7 +9,8 @@ plotGeneExpressionVsMidline(
   genes,
   binNumber = 7,
   binwidth = 40,
-  save_plot = FALSE
+  save_plot = FALSE,
+  xlim = c(-500, 500)
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ plotGeneExpressionVsMidline(
 \item{binwidth}{Width of bins for gene expression averaging (lines) Suggested binwidth = 40 for 40micron bins}
 
 \item{save_plot}{Option to save plot as .eps in working directory (TRUE, FALSE)}
+
+\item{xlim}{Define x-axis limits as vector.}
 }
 \value{
 Pooled dataframe containing Cell IDs, coordinates (X,Y), gene expression counts for specififed gene(s),
