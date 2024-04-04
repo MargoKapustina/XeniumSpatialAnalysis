@@ -128,7 +128,7 @@ plotGeneExpressionVsMidline <- function(geneExpressionData, genes,
   pooled_df <- do.call(rbind, geneExpressionData)
   #create plot
   p1 <- ggplot2::ggplot(pooled_df, ggplot2::aes(x = dLine)) +
-    ggplot2::geom_histogram(ggplot2::aes(y = stat(count / 100)), bins = binNumber, boundary = 0, colour = 'blue') +
+    ggplot2::geom_histogram(ggplot2::aes(y = ggplot2::after_stat(count / 100)), bins = binNumber, boundary = 0, colour = 'blue') +
     ggplot2::coord_cartesian(ylim = c(0, 5), xlim = c(-500, 500)) +
     ggplot2::xlab('Distance away from spatial midline') +
     ggplot2::ylab(paste('Bars: Number of cells per binned distance/100 \n Lines: Gene expression averaged per bin for genes:\n', paste(genes, collapse = ", "))) +
