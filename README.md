@@ -293,6 +293,7 @@ Then, use `plotGeneExpressionVsMidline()` to create a pooled dataframe containin
 > * `binNumber` Number of bins to use for histogram (bars). Suggested binNumber = total # cells in pooled data/binwidth (default: 7)
 > * `binwidth` Width of bins for gene expression averaging (lines) Suggested binwidth = 40 for 40micron bins (default: 40)
 > * `save_plot` Option to save plot as .eps in working directory (TRUE, FALSE)
+> * `xlim` Define x-axis limits as vector (default: -500 to 500)
 ```R
 #pool data and plot gene expression vs spatial midline data for multiple genes, across multiple FOVs
 #lines are gene expression values (averaged gene counts per binned cells) & histogram is number of cells in each bin 
