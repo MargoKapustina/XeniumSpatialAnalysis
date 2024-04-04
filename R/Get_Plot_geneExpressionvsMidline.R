@@ -108,6 +108,7 @@ getExpressionvsMidline <- function(object, FOV = 'fov', genes, degs) {
 #' @param binNumber Number of bins to use for histogram (bars). Suggested binNumber = total # cells in pooled data/binwidth
 #' @param binwidth Width of bins for gene expression averaging (lines) Suggested binwidth = 40 for 40micron bins
 #' @param save_plot Option to save plot as .eps in working directory (TRUE, FALSE)
+#' @param xlim Define x-axis limits as vector.
 #'
 #' @return Pooled dataframe containing Cell IDs, coordinates (X,Y), gene expression counts for specififed gene(s),
 #'    and computed distance away from spatial midline of each cell, across all FOVs in data
@@ -123,13 +124,14 @@ getExpressionvsMidline <- function(object, FOV = 'fov', genes, degs) {
 
 plotGeneExpressionVsMidline <- function(geneExpressionData, genes,
                                         binNumber = 7, binwidth = 40,
-                                        save_plot = FALSE) {
+                                        save_plot = FALSE,
+                                        xlim = c(-500, 500)) {
   # Use do.call to rbind the objects in the list
   pooled_df <- do.call(rbind, geneExpressionData)
   #create plot
   p1 <- ggplot2::ggplot(pooled_df, ggplot2::aes(x = dLine)) +
     ggplot2::geom_histogram(ggplot2::aes(y = ggplot2::after_stat(count / 100)), bins = binNumber, boundary = 0, colour = 'blue') +
-    ggplot2::coord_cartesian(ylim = c(0, 5), xlim = c(-500, 500)) +
+    ggplot2::coord_cartesian(ylim = c(0, 5), xlim = xlim) +
     ggplot2::xlab('Distance away from spatial midline') +
     ggplot2::ylab(paste('Bars: Number of cells per binned distance/100 \n Lines: Gene expression averaged per bin for genes:\n', paste(genes, collapse = ", "))) +
     ggplot2::ggtitle('Average gene expression values vs Spatial midline')
