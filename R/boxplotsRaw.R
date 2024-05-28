@@ -20,7 +20,7 @@
 #' BoxPlots = XeniumBoxPlotRaw(object = atn, genes = my_genes)
 #' @export
 
-XeniumBoxPlotRaw = function(genes, ncol = 4, object, save_plot = FALSE) {
+XeniumBoxPlotRaw = function(object, genes, ncol = 4, save_plot = FALSE) {
 
   #get current default assay to then set back later
   current_default_assay = SeuratObject::DefaultAssay(object)
