@@ -37,7 +37,7 @@ XeniumBoxPlotRaw = function(object, genes, ncol = 4, save_plot = FALSE) {
       Seurat::VlnPlot(object, features = theGenes, pt.size = 0, layer = "counts", adjust = 0) +
         ggplot2::theme(legend.position = "nolegend") +
         ggplot2::geom_boxplot(outlier.size = 0, outlier.stroke = 0, lwd = 0.3) +
-        ggplot2::theme(axis.line = element_line(linewidth = 0.5), axis.text.y = element_text(size = 6), axis.text.x = element_blank(),
+        ggplot2::theme(axis.line = element_line(linewidth = 0.5), axis.text.y = element_text(size = 6), axis.text.x = element_text(size = 6),
               axis.title = element_blank(), title = element_text(size = 6),
               plot.background = element_blank())
     }
