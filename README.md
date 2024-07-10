@@ -371,6 +371,79 @@ pooled_UMAP1_vsMidline = plotUMAP1_vsMidline(list(UMAP1_midline_data_fov, UMAP1_
 <img src = "https://github.com/MargoKapustina/Xenium-spatial-tools/assets/129800017/2643f1a1-d079-4f9c-bde7-5888cdb293e5"
 </p>
 
+### Beta Functions:
+To examine whether your cells exhibit superficial-deep transcriptomic differences, the following examples will guide you through extracting cell coordinates with relevant information and computing distance along a cortical layer and cell distances away from a boundary that you define.
+
+First, use `object_FOV_to_coordinates`() to create a dataframe with cell ID coordinates and cluster IDs from a Xenium Seurat object. This function will also allow you to define a boundary for each FOV, that you specifiy if you are interested in assessing whether cell cluster IDs differ above, and below, a regional boundary that you define. The function will return a dataframe with cell ID, coordinates, cluster ID, and a plot with UMAP_1 embedding values and the boundary that you define. Please make sure that you have already run dimensionality reduction and clustering on your Xeniu object before running this function.
+
+When using `object_FOV_to_coordinates()` please specify:
+* `object` Xenium object to extract cell coordinates from
+* `thisFOV` Name of our FOV to extract coordinates from
+* `threshold_y` Boundary that you define to compute cells that are above and below this
+* `angle_adjust` Option to adjust the angle of your cell coordinates (TRUE, FALSE)
+* `theta_deg` Specify the degrees you wish to rotate your slice by
+#' `flip_x_coordinates` Option to flip your slice in the horizontal plane (TRUE, FALSE)
+
+```R
+distanceData_X11fov = object_FOV_to_coordinates(object, thisFOV = 'X11fov', threshold_y = 1911, 
+                                                angle_adjust = TRUE, 
+                                                theta_deg = 20, 
+                                                flip_x_coordinates = TRUE)
+```
+
+<p align="center">
+<img width = '60%' src = "https://github.com/MargoKapustina/XeniumSpatialAnalysis/assets/129800017/5c6e6171-f5ef-460c-a28f-dfd827ce05a2"
+</p>
+
+Once you have run object_FOV_to_coordinates() on all slices, merge your FOV-specific dataframes using rbind(), and compute the normalized distance away from the boundary for each of the slices.
+
+```R
+#merge all distancedistanceData
+distance_data_all = rbind(distanceData_X2fov, distanceData_X3fov)
+distance_data_all= rbind(distance_data_all, distanceData_X4fov)
+distance_data_all= rbind(distance_data_all, distanceData_X11fov)
+
+#add normalized distance
+distance_data_all$normalized_distance = (distance_data_all$y - distance_data_all$threshold)
+```
+Now, use `analyzeLayer()` to compute the cell normalized distances along the cortical layer and away from a boundary that you define. To define your boundary, click sequential points in your plot screen, and hit `ESC` when complete. The boundary defined will be showed in the plot screen.
+When using `analyzeLayer()` please specify:
+* `thisFOV` Name of our FOV to extract coordinates from
+
+__Make sure that you have your merged distanceData stored as distance_data_all__
+```R
+#make sure that you have merged distanceData stored as distance_data_all
+#if you only have one FOV, rename the dataframe to distance_data_all
+
+#save your working directory to where plot output wil be saved
+setwd("/myPlots")
+cellDataX11fov <- analyzeLayer("X11fov")
+dev.copy2eps(file = 'X11fovAnalysis.eps')
+```
+<p align="center">
+<img width = '60%' src = "https://github.com/MargoKapustina/XeniumSpatialAnalysis/assets/129800017/1ef250f0-bbdc-47b1-ab8c-3d7e00d2d47c"
+</p>
+
+_Upon running this function, several plots will be saved. These plots show:_
+> * normalized distance along the cortical layer
+> * normalized distance to boundary of the cortical layer
+> * histogram of distances along the cortical layer
+> * histogram of distances to the boundary of the cortical layer
+
+<p align="center">
+<img width = '41%' src = "https://github.com/MargoKapustina/XeniumSpatialAnalysis/assets/129800017/d9ef686e-c52f-4340-a322-2fdd794fdd55"></img>
+<img width = '40%' src = "https://github.com/MargoKapustina/XeniumSpatialAnalysis/assets/129800017/f2d91f44-7ff9-47b0-91c1-4c09a6f0ed64"></img>
+<img width = '40%' src = "https://github.com/MargoKapustina/XeniumSpatialAnalysis/assets/129800017/2001adea-e51f-43c7-87fb-a68937b2d861"></img>
+<img width = '40%' src = "https://github.com/MargoKapustina/XeniumSpatialAnalysis/assets/129800017/aea3dca3-ae7f-4b39-b4b8-eb00e3ca82d0"></img>
+</p>
+
+Next, you can merge FOV-specific cell data into a merged dataframe to compare cell cluster ID and normalized distance along the neocoritcal layer, or away from the defined boundary
+```R
+#merge all cellData
+allCellData = rbind(cellDataX2fov, cellDataX3fov)
+allCellData= rbind(allCellData, cellDataX4fov)
+allCellData= rbind(allCellData, cellDataX11fov)
+```
 
 # Function List
 `HighlightCluster`
@@ -404,6 +477,14 @@ pooled_UMAP1_vsMidline = plotUMAP1_vsMidline(list(UMAP1_midline_data_fov, UMAP1_
   
 `plotUMAP1inSitu_Midline`
 * plots gene expression data for cells and their distance away from Spatial Midline across multiple FOVs
+
+#### Beta Functions
+`object_FOV_to_coordinates`
+* plots gene expression data for cells and their distance away from Spatial Midline across multiple FOVs
+
+`analyzeLayer`
+* plots gene expression data for cells and their distance away from Spatial Midline across multiple FOVs
+
    
 > Interested in recreating the tutorial from our processed Xenium seurat object?
 ```R
