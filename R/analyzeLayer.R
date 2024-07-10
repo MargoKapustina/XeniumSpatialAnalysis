@@ -184,7 +184,7 @@ analyzeLayer<- function(thisFOV) {
   title = paste0("Histogram of distances along the spline: ", thisFOV)
   p_hist <- ggplot(cell_data, aes(x = normalized_distance_along_spline)) +
     geom_histogram(color = "grey", fill = "violet", bins = 30) +
-    labs(x = "Distance along spline", y = "Frequency", title = title)
+    labs(x = "Normalized distance along spline", y = "Frequency", title = title)
   filename <- paste0("Histogram_distanceAlongSpline_", thisFOV, ".eps")
   ggsave(filename = filename, plot = p_hist)
 
@@ -192,7 +192,7 @@ analyzeLayer<- function(thisFOV) {
   title = paste0("Histogram of distances to the spline: ", thisFOV)
   p_hist2 <- ggplot(cell_data, aes(x = normalized_distance_to_spline)) +
     geom_histogram(color = "grey", fill = "gold", bins = 30) +
-    labs(x = "Distance to spline", y = "Frequency", title = title)
+    labs(x = "Normalized distance to spline", y = "Frequency", title = title)
   filename <- paste0("Histogram_distanceToSpline_", thisFOV, ".eps")
   ggsave(filename = filename, plot = p_hist2)
   ###############################
