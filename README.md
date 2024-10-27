@@ -14,9 +14,10 @@ _July 9th 2024: New Beta functions (analyzeLayer and object_FOV_to_coordinates) 
 
 ## Overview
 1. [Toolkit Contents](#toolkit-contents)
-2. [Installation](#installation)
-3. [Tutorial](#tutorial)
-4. [Function List](#function-list)
+2. [Citation](#citation)
+3. [Installation](#installation)
+4. [Tutorial](#tutorial)
+5. [Function List](#function-list)
 
 # Toolkit Contents
 The following can be performed with this suite of tools:  
@@ -32,7 +33,11 @@ The following can be performed with this suite of tools:
 * compute UMAP_1 embeddings as a function of distance away from a computed midline
 * ... and more!
 
-
+# Citation
+If you find this Xenium Toolkit useful, please cite our paper:
+```text
+Kapustina, M., Zhang, A.A., Tsai, J.Y.J., Bristow, B.N., Kraus, L., Sullivan, K.E., Erwin, S.R., Wang, L., Stach, T.R., Clements, J., et al. (2024). The cell-type-specific spatial organization of the anterior thalamic nuclei of the mouse brain. Cell Reports 43, 113842–113842. https://doi.org/10.1016/j.celrep.2024.113842.
+```
 
 # Installation 
 > **Please ensure that your R version >= 4.3.2.**     
