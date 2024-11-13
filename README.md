@@ -379,15 +379,15 @@ pooled_UMAP1_vsMidline = plotUMAP1_vsMidline(list(UMAP1_midline_data_fov, UMAP1_
 ### Beta Functions:
 To examine whether your cells exhibit superficial-deep transcriptomic differences, the following examples will guide you through extracting cell coordinates with relevant information and computing distance along a cortical layer and cell distances away from a boundary that you define.
 
-First, use `object_FOV_to_coordinates`() to create a dataframe with cell ID coordinates and cluster IDs from a Xenium Seurat object. This function will also allow you to define a boundary for each FOV, that you specifiy if you are interested in assessing whether cell cluster IDs differ above, and below, a regional boundary that you define. The function will return a dataframe with cell ID, coordinates, cluster ID, and a plot with UMAP_1 embedding values and the boundary that you define. Please make sure that you have already run dimensionality reduction and clustering on your Xeniu object before running this function.
+First, use `object_FOV_to_coordinates()` to create a dataframe with cell ID coordinates and cluster IDs from a Xenium Seurat object. This function will also allow you to define a boundary for each FOV, that you specifiy if you are interested in assessing whether cell cluster IDs differ above, and below, a regional boundary that you define. The function will return a dataframe with cell ID, coordinates, cluster ID, and a plot with UMAP_1 embedding values and the boundary that you define. Please make sure that you have already run dimensionality reduction and clustering on your Xenium object before running this function.
 
 When using `object_FOV_to_coordinates()` please specify:
 * `object` Xenium object to extract cell coordinates from
-* `thisFOV` Name of our FOV to extract coordinates from
+* `thisFOV` Name of the FOV to extract coordinates from
 * `threshold_y` Boundary that you define to compute cells that are above and below this
 * `angle_adjust` Option to adjust the angle of your cell coordinates (TRUE, FALSE)
 * `theta_deg` Specify the degrees you wish to rotate your slice by
-#' `flip_x_coordinates` Option to flip your slice in the horizontal plane (TRUE, FALSE)
+* `flip_x_coordinates` Option to flip your slice in the horizontal plane (TRUE, FALSE)
 
 ```R
 distanceData_X11fov = object_FOV_to_coordinates(object, thisFOV = 'X11fov', threshold_y = 1911, 
