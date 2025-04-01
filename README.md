@@ -8,7 +8,7 @@ This repository contains R tools and workflows for spatial analysis of cell-type
 ***
 We will use the anterodorsal nucleus of the anterior thalamic nuclei (ATN) within two brain slices from [our Cell Reports paper](https://www.cell.com/cell-reports/fulltext/S2211-1247(24)00170-0?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS2211124724001700%3Fshowall%3Dtrue) to demonstrate how to examine gene expression gradients. You can also check out the raw data and full Seurat processed object at our [GEO portal](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE255953), or download just the anterodorsal nucleus of the ATN in two slices [here](https://osf.io/zae5v/?view_only=27b80485b12441478755fe61613743e3) in `.rds` file format to follow the tutorial. 
 
-_July 9th 2024: New Beta functions (analyzeLayer and object_FOV_to_coordinates) have been added with tutorials coming soon!_
+_July 9th 2024: New functions (analyzeLayer and object_FOV_to_coordinates) have been added along with tutorials!_
 * `object_FOV_to_coordinates` allows you to extract cell ID, cluster ID, cell coordinates, etc. for cells from a specified FOV in your Xenium object.
 * `analyzeLayer` allows you to compute cell normalized distances along along a cortical layer, and away from a boundary that you define to examine superficial-deep differences in cell-type composition or spatial organization.
 
