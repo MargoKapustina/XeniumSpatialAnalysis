@@ -246,9 +246,11 @@ iii. Compute the midline intersecting cells within specified FOV
   
 First, run `plotUMAP1_inSituMidline()`, making sure to check how your spatial midline looks. If it looks off - please adjsut `degs` parameter. When using the function specify:
 * `object` a Xenium object
-* `gene`s Character vector of gene names to fetch expression data for
 * `FOV` FOV to extract coordinates from
 * `degs` User-defined angle, defined in degrees, that intersects centrepoint in midline computation
+> * `EmbeddingsPlotTitle` title for UMAP_1 Embeddings plot
+> * `HistogramPlotTitle` title for UMAP_1 Embeddings Histogram plot
+> * `inSituPlotTitle `title for UMAP_1 Embeddings in situ plot
 > * `save_plot` Option to save plot as .eps in working directory (TRUE, FALSE)
 ```R
 #Plot 1D UMAP, corresponding histogram of UMAP_1 embedding values, UMAP_1 embedding values in situ (within specified FOV), and compute the midline intersecting cells (within specified FOV).
