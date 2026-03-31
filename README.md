@@ -3,6 +3,11 @@
  <img src="https://github.com/MargoKapustina/XeniumSpatialAnalysis/assets/129800017/d776c089-0f7e-4400-9d27-b6ee8dce4125" width="62%"> 
 </p>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/version-1.0.0-brightgreen" />
+  <img src="https://img.shields.io/badge/status-stable-blue" />
+</p>
+
 
 This repository contains R tools and workflows for spatial analysis of cell-types using single-cell spatial transcriptomic Xenium data. To know more about Xenium technology, check out the [Xenium workflow](https://www.10xgenomics.com/support/software/xenium-onboard-analysis/latest).    
 ***
