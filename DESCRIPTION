@@ -1,7 +1,7 @@
 Package: XeniumSpatialAnalysis
 Type: Package
 Title: Xenium Spatial Analysis Toolkit
-Version: 0.1.0
+Version: 1.0.0
 Author: Margarita Kapustina <margokap@student.ubc.ca>
 Maintainer: Margarita Kapustina <margokap@student.ubc.ca>
 Description: Toolkit in R to perform spatial analysis of Xenium single-cell spatial transcriptomic data, and assess spatial gradients of gene expression. 
