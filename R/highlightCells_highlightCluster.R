@@ -23,13 +23,18 @@
 highlightCluster <- function(object, cluster_id, size = 3, alpha_value = 0.5, FOV = c("fov", 'X1fov'), color_palette = 'glasbey', save_plot = FALSE) {
   toPlot <- Seurat::WhichCells(object, idents = cluster_id)
   object@meta.data$ClusterToPlot <- ifelse(colnames(object) %in% toPlot, "this_cluster", "all_else")
-  p1 = Seurat::ImageDimPlot(object, group.by = 'ClusterToPlot', size = size, alpha = alpha_value, fov = FOV, cols = color_palette)
+  p1 = Seurat::ImageDimPlot(object,
+    group.by = 'ClusterToPlot',
+    size = size,
+    alpha = alpha_value,
+    fov = FOV,
+    cols = color_palette) + ggplot2::ggtitle(paste("Cluster:", cluster_id))
   # saving plot
   if (save_plot) {
     print('Saving plot...')
     dev.copy2pdf(file = 'ClusterHighlighted.pdf')
     print("Plot saved to working directory.")}
-  print(p1)
+  #print(p1) #bug fix for plotting behaviour
   #remove the ClusterToPlot column
   object@meta.data$ClusterToPlot = NULL
   return(p1)
@@ -73,7 +78,7 @@ highlightCells <- function(highlight_obj, within_obj, size = 3,
     print('Saving plot...')
     dev.copy2pdf(file = 'ObjectHighlighted.pdf')
     print("Plot saved to working directory.")}
-  print(p1)
+  #print(p1) #bug fix for plotting behaviour
   #remove the ClusterToPlot column
   within_obj@meta.data$CellsToPlot = NULL
   return(p1)

@@ -7,8 +7,9 @@
 #' @param thisFOV Name of your FOV to extract coordinates from
 #' @param threshold_y Boundary that you define to compute cells that are above and below this boundary
 #' @param angle_adjust Option to adjust the angle of your cell coordinates (TRUE, FALSE)
-#' @param thetda_deg Specify the degrees you wish to rotate your slice by
+#' @param theta_deg Specify the degrees you wish to rotate your slice by
 #' @param flip_x_coordinates Option to flip your slice in the horizontal plane (TRUE, FALSE)
+#' @param save_plot Logical. If TRUE, saves the plot as an .eps file in the working directory (default: FALSE)
 #'
 #' @return A dataframe with cell ID, coordinates, cluster ID, and a plot with UMAP_1 embedding values and the boundary that you define
 #'
@@ -20,10 +21,16 @@
 #' @examples
 #' distanceData_X2fov = object_FOV_to_coordinates(object = a, thisFOV = 'X2fov', threshold_y = 2694, angle_adjust = FALSE, theta_deg = 0, flip_x_coordinates = FALSE)
 #' @export
-object_FOV_to_coordinates <- function(object = object, thisFOV = 'X9fov', threshold_y = 2000, angle_adjust = FALSE, theta_deg = 0, flip_x_coordinates = FALSE) {
+object_FOV_to_coordinates <- function(object = object, 
+                                      thisFOV = 'X9fov', 
+                                      threshold_y = 2000, 
+                                      angle_adjust = FALSE, 
+                                      theta_deg = 0, 
+                                      flip_x_coordinates = FALSE, 
+                                      save_plot = FALSE) {
   #set default fov
   ####################################
-  DefaultFOV(object) = thisFOV
+  SeuratObject::DefaultFOV(object) = thisFOV
   #get current default assay to then set back later
   current_default_assay = SeuratObject::DefaultAssay(object)
   # Get UMAP_1 embeddings from Xenium object
@@ -71,18 +78,20 @@ object_FOV_to_coordinates <- function(object = object, thisFOV = 'X9fov', thresh
 
   message('Plotting your final coordinates, UMAP_1 embeddings and threshold...')
   #plot out UMAP_1 embedding with nucleus midline####################
-  gg <- ggplot(coordsEmbeddingsdf_oneFOV,aes(x=x,y=y))
-  gg <- gg + geom_point(aes(colour= UMAP_1), size = 1.5)
-  gg <- gg + geom_hline(yintercept = threshold_y, linetype = "dashed", color = "red")
-  gg <- gg + coord_fixed() +ggtitle(thisFOV,threshold_y)+scale_color_viridis_c()
+  gg <- ggplot2::ggplot(coordsEmbeddingsdf_oneFOV, ggplot2::aes(x=x,y=y))
+  gg <- gg +  ggplot2::geom_point(ggplot2::aes(colour = UMAP_1), size = 1.5)
+  gg <- gg + ggplot2::geom_hline(yintercept = threshold_y, linetype = "dashed", color = "red")
+  gg <- gg + ggplot2::coord_fixed() +ggplot2::ggtitle(thisFOV,threshold_y)+ggplot2::scale_color_viridis_c()
   print(gg) ##############print  for each FOV!
   # Construct the file name dynamically based on the value of this
-  message('Plot will be saved as:')
-  file_name <- paste(thisFOV, ".eps", sep = "")
-  print(file_name)
-  ggsave(file_name, gg)
+  file_name <- paste0(thisFOV, ".eps")
+  #only save if T
+  if (isTRUE(save_plot)) {
+    message("Plot will be saved as: ", file_name)
+    ggplot2::ggsave(filename = file_name, plot = gg)
+  }
   # Extract cluster IDs from Seurat object ###########
-  cluster_ids <- as.data.frame(Idents(object))
+  cluster_ids <- as.data.frame(SeuratObject::Idents(object))
   colnames(cluster_ids) <- c("cluster_ids")  # Renaming column for better readability
   cluster_ids$cell <- rownames(cluster_ids)# Adding cell ID column based on row names
   rownames(cluster_ids) = NULL

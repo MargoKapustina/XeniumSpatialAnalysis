@@ -59,7 +59,7 @@ XeniumBoxPlotRaw = function(object, genes, ncol = 4, save_plot = FALSE) {
     grid <- cowplot::plot_grid(plotlist = plots, ncol = ncol)
 
     # Print the combined plot
-    print(grid)
+    #print(grid) # plotting behaviour fix
 
     # saving
     if (save_plot) {

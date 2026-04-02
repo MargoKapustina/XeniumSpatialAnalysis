@@ -10,7 +10,8 @@ object_FOV_to_coordinates(
   threshold_y = 2000,
   angle_adjust = FALSE,
   theta_deg = 0,
-  flip_x_coordinates = FALSE
+  flip_x_coordinates = FALSE,
+  save_plot = FALSE
 )
 }
 \arguments{
@@ -22,9 +23,11 @@ object_FOV_to_coordinates(
 
 \item{angle_adjust}{Option to adjust the angle of your cell coordinates (TRUE, FALSE)}
 
+\item{theta_deg}{Specify the degrees you wish to rotate your slice by}
+
 \item{flip_x_coordinates}{Option to flip your slice in the horizontal plane (TRUE, FALSE)}
 
-\item{thetda_deg}{Specify the degrees you wish to rotate your slice by}
+\item{save_plot}{Logical. If TRUE, saves the plot as an .eps file in the working directory (default: FALSE)}
 }
 \value{
 A dataframe with cell ID, coordinates, cluster ID, and a plot with UMAP_1 embedding values and the boundary that you define
