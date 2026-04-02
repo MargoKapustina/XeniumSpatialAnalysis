@@ -27,8 +27,8 @@ plotUMAP1_inSitu(
 \item{save_plot}{Option to save plot as .eps in working directory (TRUE, FALSE)}
 }
 \value{
-Dataframe containing Cell IDs, coordinates (X,Y) and computed UMAP_1 embeddings values for cells in specified FOV.
-#Plots 1D UMAP, corresponding histogram of UMAP_1 embeddings values, and UMAP_1 embeddings values plotted _in situ_.
+Dataframe containing Cell IDs, coordinates (X,Y) and computed UMAP_1 embedding values for cells in specified FOV.
+Plots 1D UMAP, corresponding histogram of UMAP_1 embedding values, and UMAP_1 embedding values plotted _in situ_.
 }
 \description{
 Plots: 1-dimensional UMAP, the corresponding histogram of UMAP_1 embedding values, and

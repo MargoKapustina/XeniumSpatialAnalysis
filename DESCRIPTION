@@ -6,17 +6,16 @@ Author: Margarita Kapustina <margokap@student.ubc.ca>
 Maintainer: Margarita Kapustina <margokap@student.ubc.ca>
 Description: Toolkit in R to perform spatial analysis of Xenium single-cell spatial transcriptomic data, and assess spatial gradients of gene expression. 
 Imports:
-	Seurat,
-	SeuratObject,
-	ggplot2,
-	cowplot,
-	dplyr,
-	tibble,
-	gridExtra,
-	viridis,
-	tibble
+  Seurat,
+  SeuratObject,
+  ggplot2,
+  cowplot,
+  dplyr,
+  tibble,
+  gridExtra,
+  viridis
 License: GPL-3.0 file LICENSE
 Encoding: UTF-8
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 Depends: 
     R (>= 4.3.2)

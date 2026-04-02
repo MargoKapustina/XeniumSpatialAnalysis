@@ -8,7 +8,7 @@
 #' @param FOV FOV to extract coordinates from
 #' @param degs User-defined angle, defined in degrees, that intersects centrepoint in midline computation
 #'
-#' @return Dataframe containing Cell IDs, coordinates (X,Y), gene expression counts for specififed gene(s),
+#' @return Dataframe containing Cell IDs, coordinates (X,Y), gene expression counts for specified gene(s),
 #'    and computed distance away from spatial midline of each cell, in specified FOV.
 #' @import ggplot2
 #' @import Seurat
@@ -21,32 +21,32 @@
 #' @export
 
 getExpressionvsMidline <- function(object, FOV = 'fov', genes, degs) {
-
+  
   #get current default assay to then set back later
   current_default_assay = SeuratObject::DefaultAssay(object)
-
+  
   # Set default FOV
   SeuratObject::DefaultFOV(object) <- FOV
-
+  
   # Get tissue coordinates for the set default FOV only
   df <- Seurat::GetTissueCoordinates(object)
-
+  
   # Fetch gene expression data
   exp <- Seurat::FetchData(object, genes, layer = 'counts')
   exp = tibble::rownames_to_column(exp, var = "cell")
-
+  
   # Get expression values for only FOV of interest
   cells_to_get <- df[["cell"]]
   exp_subset <- exp[exp$cell %in% cells_to_get, ]
-
+  
   # Make an expression and coordinate table
   expressionTable_fov <- cbind(exp_subset, df)
   expressionTable_fov <- expressionTable_fov[, !duplicated(colnames(expressionTable_fov))]
-
+  
   # Change column names to capitals (works for all number of genes)
   names(expressionTable_fov)[names(expressionTable_fov) == 'x'] <- 'X'
   names(expressionTable_fov)[names(expressionTable_fov) == 'y'] <- 'Y'
-
+  
   #store .getCentre() Function
   .getCentre <- function(df,doMean=F){
     if(doMean){
@@ -56,15 +56,15 @@ getExpressionvsMidline <- function(object, FOV = 'fov', genes, degs) {
       dX <- median(df$X)
       dY <- median(df$Y)
     }
-
+    
     dX <- df$X-dX
     dY <- df$Y-dY
-
+    
     df <- cbind(df,dX,dY)
-
+    
     return(df)
   }
-
+  
   # Compute center of coordinates used for analysis (i.e., per FOV)
   centre = expressionTable_fov %>% .getCentre(doMean = FALSE)
   # Run distance operation, make a new data frame "myplot"
@@ -78,7 +78,7 @@ getExpressionvsMidline <- function(object, FOV = 'fov', genes, degs) {
   gg <- gg + ggplot2::geom_abline(slope=m)
   gg <- gg + ggplot2::coord_fixed() + ggplot2::ggtitle('Midline of Cells')
   print(gg)
-
+  
   # Annotate which FOV the data belongs to
   myplot$fov = FOV
   # make myplot df unique for each fov ##########
@@ -86,14 +86,14 @@ getExpressionvsMidline <- function(object, FOV = 'fov', genes, degs) {
   dfTitle <- "geneExpression"
   dfName <- paste(dfTitle, FOV, sep = "_")
   assign(dfName, myplot)
-
+  
   print("If spatial midline looks off, please adjust 'degs' parameter!")
   message('Please save the dataframe with FOV identifier, such as:  ',
           dfName)
-
+  
   #change default assay back to whatever it was before running function
   SeuratObject::DefaultAssay(object) <- current_default_assay
-
+  
   # Return the resulting df (for the FOV specified)
   return(get(dfName))
 }
@@ -110,7 +110,7 @@ getExpressionvsMidline <- function(object, FOV = 'fov', genes, degs) {
 #' @param save_plot Option to save plot as .eps in working directory (TRUE, FALSE)
 #' @param xlim Define x-axis limits as vector.
 #'
-#' @return Pooled dataframe containing Cell IDs, coordinates (X,Y), gene expression counts for specififed gene(s),
+#' @return Pooled dataframe containing Cell IDs, coordinates (X,Y), gene expression counts for specified gene(s),
 #'    and computed distance away from spatial midline of each cell, across all FOVs in data
 #'
 #' @import ggplot2
@@ -135,7 +135,7 @@ plotGeneExpressionVsMidline <- function(geneExpressionData, genes,
     ggplot2::xlab('Distance away from spatial midline') +
     ggplot2::ylab(paste('Bars: Number of cells per binned distance/100 \n Lines: Gene expression averaged per bin for genes:\n', paste(genes, collapse = ", "))) +
     ggplot2::ggtitle('Average gene expression values vs Spatial midline')
-
+  
   # Define a color palette (adjust as needed)
   color_palette <- c("red", "green", "pink", "black", "orange")
   # Create a mapping from gene names to colors
@@ -149,7 +149,7 @@ plotGeneExpressionVsMidline <- function(geneExpressionData, genes,
     cat(gene, ":", gene_color, "\n")}
   print("Generating plot...")
   print(p1)
-
+  
   # Calculate the number of cells in each bin
   bin_counts <- ggplot2::ggplot_build(p1)$data[[1]]
   cat("Number of cells in each bin (note: plotted are counts/100):
@@ -162,6 +162,6 @@ Beginning on left-most bin...\n")
     print('Saving plot...')
     dev.copy2eps(file = 'BoxPlots_SCTcounts.eps')
     print("Plot saved to working directory.")}
-
+  
   return(pooled_df)
 }

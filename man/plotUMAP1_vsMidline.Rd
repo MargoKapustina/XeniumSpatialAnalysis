@@ -2,7 +2,7 @@
 % Please edit documentation in R/plotUMAP1_line_and_histogram.R
 \name{plotUMAP1_vsMidline}
 \alias{plotUMAP1_vsMidline}
-\title{Plots UMAP_1 embeddings values for cells and their distance away from the computed spatial midline (supports multiple FOVs)}
+\title{Plots UMAP_1 embedding values for cells and their distance away from the computed spatial midline (supports multiple FOVs)}
 \usage{
 plotUMAP1_vsMidline(
   UMAP1MidlineData,

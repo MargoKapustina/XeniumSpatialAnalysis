@@ -2,14 +2,14 @@
 % Please edit documentation in R/plotUMAP1_line_and_histogram.R
 \name{getUMAP1_MidlineData}
 \alias{getUMAP1_MidlineData}
-\title{Fetch UMAP_1 embeddings values for cells and their distance away from Spatial Midline}
+\title{Fetch UMAP_1 embedding values for cells and their distance away from Spatial Midline}
 \usage{
 getUMAP1_MidlineData(object, FOV, degs = 45, binNumber = 15, binwidth = 40)
 }
 \arguments{
 \item{object}{a Xenium object}
 
-\item{FOV}{FOV to extract coordinates and UMAP_1 embeddings values from}
+\item{FOV}{FOV to extract coordinates and UMAP_1 embedding values from}
 
 \item{degs}{User-defined angle, defined in degrees, that intersects centrepoint in midline computation}
 

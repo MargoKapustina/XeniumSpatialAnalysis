@@ -27,7 +27,7 @@ plotGeneExpressionVsMidline(
 \item{xlim}{Define x-axis limits as vector.}
 }
 \value{
-Pooled dataframe containing Cell IDs, coordinates (X,Y), gene expression counts for specififed gene(s),
+Pooled dataframe containing Cell IDs, coordinates (X,Y), gene expression counts for specified gene(s),
    and computed distance away from spatial midline of each cell, across all FOVs in data
 }
 \description{

@@ -30,8 +30,8 @@ plotUMAP1_inSituMidline(
 \item{inSituPlotTitle}{title for UMAP_1 Embeddings in situ plot}
 }
 \value{
-Dataframe containing Cell IDs, coordinates (X,Y) and computed UMAP_1 embeddings values for cells in specified FOV.
-#Plots 1D UMAP, corresponding histogram of UMAP_1 embeddings values, and UMAP_1 embeddings values plotted in situ.
+Dataframe containing Cell IDs, coordinates (X,Y) and computed UMAP_1 embedding values for cells in specified FOV.
+#Plots 1D UMAP, corresponding histogram of UMAP_1 embedding values, and UMAP_1 embedding values plotted in situ.
 }
 \description{
 Plots: 1-dimensional UMAP, the corresponding histogram of UMAP_1 embedding values,

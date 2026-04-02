@@ -16,7 +16,7 @@ getExpressionvsMidline(object, FOV = "fov", genes, degs)
 \item{degs}{User-defined angle, defined in degrees, that intersects centrepoint in midline computation}
 }
 \value{
-Dataframe containing Cell IDs, coordinates (X,Y), gene expression counts for specififed gene(s),
+Dataframe containing Cell IDs, coordinates (X,Y), gene expression counts for specified gene(s),
    and computed distance away from spatial midline of each cell, in specified FOV.
 }
 \description{

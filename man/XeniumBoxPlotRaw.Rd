@@ -4,14 +4,14 @@
 \alias{XeniumBoxPlotRaw}
 \title{Xenium Gene Box Plots - Raw Counts}
 \usage{
-XeniumBoxPlotRaw(genes, ncol = 4, object, save_plot = FALSE)
+XeniumBoxPlotRaw(object, genes, ncol = 4, save_plot = FALSE)
 }
 \arguments{
+\item{object}{Xenium object}
+
 \item{genes}{Character vector of gene names to plot}
 
 \item{ncol}{Specify number of columns in plot}
-
-\item{object}{Xenium object}
 
 \item{save_plot}{Option to save plot as .eps in working directory (TRUE, FALSE)}
 }
