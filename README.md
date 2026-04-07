@@ -463,7 +463,7 @@ allCellData = rbind(allCellData, cellDataX11fov)
 --- 
 Next, to spatially select cells and retrieve their cell ID, for the purpose of adding metadata or subsetting these cells, the following example will walk you through how to use an interactive lasso function and example use-cases. 
 
-First, before running this function, use object_FOV_to_coordinates() to create a dataframe with cell ID coordinates and cluster IDs from a Xenium Seurat object.
+First, before running this function, use `object_FOV_to_coordinates()` to create a dataframe with cell ID coordinates and cluster IDs from a Xenium Seurat object.
 
 Use `interactiveCellSelector()` to interactively select cell IDs from a spatial region of interest. This function will launch a Shiny app allowing you to spatially lasso cells. The app displays an interactive spatial plot of cells colored by cluster identity. Users can drag to select cells of interest. Upon selection, click the **"Save Selected Cell IDs"** button, which will save two objects in the global environment: 
 * (1) `cellid_<your_fov_label>` : a vector of selected cell IDs (e.g., distanceData_X1fov). This vector can be used to subset cells via: `subsetObj <- subset(myObj, cells = cellid_yourFovLabel)`
