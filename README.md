@@ -486,8 +486,9 @@ interactiveCellSelector("x2fov", distanceData_X2fov)
 # Note: if cell ID vector is missing but filtered coordinate dataframe is present, run cellID_x2fov = x2fov$cell to store cell ID vector manually
 ```
 <p align="center">
- <img width = '80%' src="https://github.com/user-attachments/assets/bf334037-1c29-49c0-a7dd-6469daa26b76" alt="lassoFastExample" />
+ <img width = '80%' src="https://github.com/user-attachments/assets/6d17f339-abf5-4541-83f0-9b88b2f77527" alt="lassoFastExample" />
 </p> 
+
 
 You can use the generated cell ID vector and filtered coordinate dataframe for downstream analysis. Some examples are:
 ```R
@@ -527,7 +528,7 @@ When using `plotMetadataFrequency` please specify:
 ```R
 plots <- plotMetadataFrequency(obj = myObj, 
     cluster_var = "seurat_clusters", 
-    group_var = "condition")
+    group_var = "sample")
 
 #visualize plots
 plots$raw+plots$norm
