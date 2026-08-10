@@ -43,9 +43,11 @@ The following can be performed with this suite of tools:
 * ... and more!
 
 # Citation
-If you find this Xenium Toolkit useful, please cite our paper:
+If you find this Xenium Toolkit useful, please cite the paper(s) used in its development:
 ```text
 Kapustina, M., Zhang, A.A., Tsai, J.Y.J., Bristow, B.N., Kraus, L., Sullivan, K.E., Erwin, S.R., Wang, L., Stach, T.R., Clements, J., et al. (2024). The cell-type-specific spatial organization of the anterior thalamic nuclei of the mouse brain. Cell Reports 43, 113842–113842. https://doi.org/10.1016/j.celrep.2024.113842.
+
+Kapustina, M., Bristow, B.N., and Cembrowski, M.S. (2025). Distinct Layer 6b transcriptomic subtypes parcellate the cortical mantle. Progress in Neurobiology 254, 102841. 10.1016/j.pneurobio.2025.102841.
 ```
 
 # Installation 
